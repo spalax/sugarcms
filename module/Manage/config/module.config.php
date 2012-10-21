@@ -6,6 +6,7 @@
  * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
+namespace Manage;
 
 return array(
     'router' => array(
@@ -13,7 +14,7 @@ return array(
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/',
+                    'route'    => '/manage',
                     'defaults' => array(
                         'controller' => 'Manage\Controller\Index',
                         'action'     => 'index',
@@ -22,10 +23,24 @@ return array(
             )
         )
     ),
+    'doctrine' => array(
+        'driver' => array(
+            __NAMESPACE__ . '_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/' . __NAMESPACE__ . '/Entity')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                )
+            )
+        )
+    ),
     'service_manager' => array(
         'factories' => array(
-            'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
-        ),
+            'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory'
+        )
     ),
     'translator' => array(
         'locale' => 'en_US',
@@ -33,7 +48,7 @@ return array(
             array(
                 'type'     => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
+                'pattern'  => '%s.mo'
             )
         )
     ),
@@ -57,5 +72,5 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         )
-    ),
+    )
 );

@@ -1,9 +1,9 @@
 <?php
 return array(
     'modules' => array(
-        'Application',
-	'DoctrineModule',
-	'DoctrineORMModule'
+        'Manage',
+        'DoctrineORMModule',
+        'DoctrineModule'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
