@@ -10,7 +10,9 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.*",
-	"doctrine/data-fixtures": "*.*",
-	"doctrine/doctrine-module": "dev-master"
+	"doctrine/doctrine-module": "dev-master",
+	"doctrine/migrations": "v1.0-ALPHA1",
+	"zendframework/zend-developer-tools": "dev-master",
+	"doctrine/doctrine-orm-module": "0.*"
     }
 }
