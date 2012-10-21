@@ -1,0 +1,122 @@
+{
+  "definition": {
+      "class": {
+            "Mvc\\Application": {
+                "methods": {
+                    "__construct": {
+                        "configuration": {
+                            "type": "Zend\\Config\\Config",
+                            "required": true
+                        },                        
+                        "serviceManager": {
+                            "type": "Zend\\ServiceManager\\ServiceManager",
+                            "required": true
+                        },
+                        "eventManager": {
+                            "type": "Zend\\EventManager\\EventManager",
+                            "required": true
+                        },
+                        "request": {
+                            "type": "Zend\\Http\\PhpEnvironment\\Request",
+                            "required": true
+                        },
+                        "response": {
+                            "type": "Zend\\Http\\PhpEnvironment\\Response",
+                            "required": true
+                        },
+                        "route": {
+                            "type": "Mvc\\Router\\SimpleRouteStack",
+                            "required": true
+                        },
+                        "dispatchListener": {
+                            "type": "Mvc\\DispatchListener",
+                            "required": true
+                        },
+                        "routeListener": {
+                            "type": "Mvc\\RouteListener",
+                            "required": true
+                        },
+                        "routeListener": {
+                            "type": "Mvc\\RouteListener",
+                            "required": true
+                        },
+                        "viewManager": {
+                            "type": "Mvc\\View\\Http\\ViewManager",
+                            "required": true
+                        },
+                        "event": {
+                            "type": "Mvc\\MvcEvent",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "Mvc\\View\\Http\\ViewManager": {
+                "methods": {
+                    "__construct": {
+                        "configuration": {
+                            "type": "Zend\\Config\\Config",
+                            "required": true
+                        },
+                        
+                        "serviceManager": {
+                            "type": "Zend\\ServiceManager\\ServiceManager",
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "Zend\\EventManager\\EventManager": {
+                "methods": {
+                    "__construct": {
+                        "identifiers": {
+                            "required": false
+                        }
+                    }
+                }
+            },
+            "Zend\\ModuleManager\\ModuleManager": {
+                "methods": {
+                    "__construct": {
+                        "modules": {
+                            "type": "array",
+                            "required": false
+                        },
+                        "eventManager": {
+                            "type": "Zend\\EventManager\\EventManager",
+                            "required": false
+                        }
+                    }
+                }
+            },
+            "Zend\\Http\\PhpEnvironment\\Request": {},
+            "Zend\\Http\\PhpEnvironment\\Response": {}
+      }
+  },
+  
+  "instance": {
+      "Mvc\\View\\Http\\ViewManager": {
+          "parameters": {
+              "configuration": "Zend\\Config\\Config",
+              "serviceManager": "Zend\\ServiceManager\\ServiceManager"
+          }
+      },
+      "Mvc\\Application": {
+          "parameters": {
+              "configuration": "Zend\\Config\\Config",
+              "serviceManager": "Zend\\ServiceManager\\ServiceManager",
+              "eventManager": "Zend\\EventManager\\EventManager",
+              "request": "Zend\\Http\\PhpEnvironment\\Request",
+              "response": "Zend\\Http\\PhpEnvironment\\Response",
+              "route": "Mvc\\Router\\SimpleRouteStack",
+              "dispatchListener": "Mvc\\DispatchListener",
+              "routeListener": "Mvc\\RouteListener",
+              "viewManager": "Mvc\\View\\Http\\ViewManager",
+              "mvcEvent": "Mvc\\MvcEvent"
+          }
+      },
+      "preferences": {
+          "Zend\\EventManager\\SharedEventManagerInterface": "Zend\\EventManager\\SharedEventManager"
+      }
+  }
+}

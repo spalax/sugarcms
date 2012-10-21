@@ -1,0 +1,28 @@
+[21-Oct-2012 11:42:50 UTC] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotFoundException' with message 'Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for EventManager' in /var/www/spalax/sugarmvc/Zend/ServiceManager/ServiceManager.php:420
+Stack trace:
+#0 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(255): Zend\ServiceManager\ServiceManager->get('EventManager')
+#1 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(289): Mvc\View\Http\ViewManager->getView()
+#2 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(146): Mvc\View\Http\ViewManager->getMvcRenderingStrategy()
+#3 [internal function]: Mvc\View\Http\ViewManager->onBootstrap(Object(Mvc\MvcEvent))
+#4 /var/www/spalax/sugarmvc/Zend/EventManager/EventManager.php(469): call_user_func(Array, Object(Mvc\MvcEvent))
+#5 /var/www/spalax/sugarmvc/Zend/EventManager/EventManager.php(209): Zend\EventManager\EventManager->triggerListeners('bootstrap', Object(Mvc\MvcEvent), Array)
+#6 /var/www/spalax/sugarmvc/Mvc/Application.php(201):  in /var/www/spalax/sugarmvc/Zend/ServiceManager/ServiceManager.php on line 420
+[21-Oct-2012 14:09:02 UTC] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotFoundException' with message 'Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for EventManager' in /var/www/spalax/sugarmvc/Zend/ServiceManager/ServiceManager.php:420
+Stack trace:
+#0 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(255): Zend\ServiceManager\ServiceManager->get('EventManager')
+#1 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(289): Mvc\View\Http\ViewManager->getView()
+#2 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(146): Mvc\View\Http\ViewManager->getMvcRenderingStrategy()
+#3 [internal function]: Mvc\View\Http\ViewManager->onBootstrap(Object(Mvc\MvcEvent))
+#4 /var/www/spalax/sugarmvc/Zend/EventManager/EventManager.php(469): call_user_func(Array, Object(Mvc\MvcEvent))
+#5 /var/www/spalax/sugarmvc/Zend/EventManager/EventManager.php(209): Zend\EventManager\EventManager->triggerListeners('bootstrap', Object(Mvc\MvcEvent), Array)
+#6 /var/www/spalax/sugarmvc/Mvc/Application.php(201):  in /var/www/spalax/sugarmvc/Zend/ServiceManager/ServiceManager.php on line 420
+[21-Oct-2012 14:28:31 UTC] PHP Parse error:  syntax error, unexpected T_VARIABLE in /var/www/spalax/sugarmvc/index.php on line 20
+[21-Oct-2012 14:29:11 UTC] PHP Fatal error:  Uncaught exception 'Zend\ServiceManager\Exception\ServiceNotFoundException' with message 'Zend\ServiceManager\ServiceManager::get was unable to fetch or create an instance for ViewHelperManager' in /var/www/spalax/sugarmvc/Zend/ServiceManager/ServiceManager.php:420
+Stack trace:
+#0 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(179): Zend\ServiceManager\ServiceManager->get('ViewHelperManag...')
+#1 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(208): Mvc\View\Http\ViewManager->getHelperManager()
+#2 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(234): Mvc\View\Http\ViewManager->getRenderer()
+#3 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(256): Mvc\View\Http\ViewManager->getRendererStrategy()
+#4 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(289): Mvc\View\Http\ViewManager->getView()
+#5 /var/www/spalax/sugarmvc/Mvc/View/Http/ViewManager.php(146): Mvc\View\Http\ViewManager->getMvcRenderingStrategy()
+#6 [internal function]: Mvc\View\Http\ViewManager->onBootstrap(Object(Mvc in /var/www/spalax/sugarmvc/Zend/ServiceManager/ServiceManager.php on line 420
