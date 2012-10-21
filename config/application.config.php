@@ -3,7 +3,8 @@ return array(
     'modules' => array(
         'Manage',
         'DoctrineORMModule',
-        'DoctrineModule'
+        'DoctrineModule',
+        'ZendDeveloperTools'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
