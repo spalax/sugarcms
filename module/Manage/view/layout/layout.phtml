@@ -20,30 +20,24 @@
 
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="<?php echo $this->url('manage-home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="active"><a href="<?php echo $this->url('manage-home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <?php echo $this->content; ?>
-            <hr>
-            <footer>
-                <p>&copy; 2005 - 2012 by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
-            </footer>
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
+        <?php echo $this->content; ?>
+        <script>
+            dojoConfig = {
+                // Don't attempt to parse the page for widgets
+                parseOnLoad: true,
+                packages: [
+                    // Any references to a "demo" resource should load modules locally, *not* from CDN
+                    {
+                        name: "manage",
+                        location: "<?=$this->basePath()?>/js/module/manage"
+                    }
+                ],
+                // Timeout after 10 seconds
+                waitSeconds: 10,
+                // Get "fresh" resources
+                cacheBust: true
+            };
+        </script>
+        <script src="<?=$this->basePath()?>/js/library/dojo/dojo/dojo.js"></script>
     </body>
 </html>
