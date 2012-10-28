@@ -11,13 +11,21 @@ namespace Manage;
 return array(
     'router' => array(
         'routes' => array(
-            'home' => array(
+            'manage-home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
                     'route'    => '/manage',
                     'defaults' => array(
-                        'controller' => 'Manage\Controller\Index',
-                        'action'     => 'index',
+                        'controller' => 'Manage\Controller\Home'
+                    )
+                )
+            ),
+            'manage-routes' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/manage/routes',
+                    'defaults' => array(
+                        'controller' => 'Manage\Controller\Routes'
                     )
                 )
             )
@@ -54,7 +62,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Manage\Controller\Index' => 'Manage\Controller\IndexController'
+            'Manage\Controller\Home' => 'Manage\Controller\HomeController',
+            'Manage\Controller\Routes' => 'Manage\Controller\RoutesController'
         )
     ),
     'view_manager' => array(
