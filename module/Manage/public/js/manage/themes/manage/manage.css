@@ -1,0 +1,8 @@
+/*
+	Adds cosmetic styling to Manage and Dijit.  Users may swap with a custom theme CSS file.
+
+*/
+
+@import url("Login.css");
+@import url("Common.css");
+@import url("package/Routes.css");

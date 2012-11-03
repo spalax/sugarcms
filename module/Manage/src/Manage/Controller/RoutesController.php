@@ -9,8 +9,10 @@
 
 namespace Manage\Controller;
 
+use Zend\View\Model\JsonModel;
+
+use Zend\Json\Server\Response;
 use Zend\Mvc\Controller\AbstractRestfulController;
-use Zend\View\Model\ViewModel;
 
 class RoutesController extends AbstractRestfulController
 {
@@ -19,8 +21,21 @@ class RoutesController extends AbstractRestfulController
      */
     public function getList()
     {
-        print_r("FUUUUUUUUUUUUUUUUUUCCCCKKKK");
-        exit(0);
+        $json = new JsonModel(array(
+            array("name"=>"main",
+                  "path"=>"/vasya/pupkin",
+                  "date"=>"today"),
+
+            array("name"=>"home",
+                  "path"=>"/epty/vasya",
+                  "date"=>"tomorrow"),
+
+            array("name"=>"petya",
+                  "path"=>"/hello/sdatas",
+                  "date"=>"day")
+        ));
+
+        return $json;
     }
 
     /* (non-PHPdoc)
@@ -28,7 +43,12 @@ class RoutesController extends AbstractRestfulController
      */
     public function get($id)
     {
+        $json = new JsonModel(array(
+            'some_parameter' => 'some value',
+            'error'=>true,
+        ));
 
+        return $json;
     }
 
     /* (non-PHPdoc)

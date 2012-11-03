@@ -1,0 +1,6 @@
+[{ "name": "Name", 
+   "field": "name", 
+   "width": "25%" },
+ { "name": "Path", 
+   "field": "path", 
+   "width": "25%" }]

@@ -11,21 +11,40 @@ namespace Manage;
 return array(
     'router' => array(
         'routes' => array(
-            'manage-home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'manage-default' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route'    => '/manage',
+                    'route' => '/manage[/:controller[.:format][/:id]]',
+                    'constraints' => array(
+                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'format' => 'json',
+                        'id' => '[a-zA-Z0-9_-]*'
+                    ),
                     'defaults' => array(
-                        'controller' => 'Manage\Controller\Home'
+                        'module' => 'manage',
+                        'controller' => 'home',
+                        'format' => 'json'
                     )
                 )
             ),
-            'manage-routes' => array(
+            'manage-login' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/manage/routes',
+                    'route'    => '/manage/login',
                     'defaults' => array(
-                        'controller' => 'Manage\Controller\Routes'
+                          'controller' => 'login'
+                    )
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'login' => array(
+                        'type' => 'Zend\Mvc\Router\Http\Literal',
+                        'options' => array(
+                            'route'    => '/in',
+                            'defaults' => array(
+                                'controller' => 'login/in'
+                            )
+                        )
                     )
                 )
             )
@@ -62,8 +81,10 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Manage\Controller\Home' => 'Manage\Controller\HomeController',
-            'Manage\Controller\Routes' => 'Manage\Controller\RoutesController'
+            'home' => 'Manage\Controller\HomeController',
+            'routes' => 'Manage\Controller\RoutesController',
+            'login' => 'Manage\Controller\Login\FormController',
+            'login/in' => 'Manage\Controller\Login\InController'
         )
     ),
     'view_manager' => array(
@@ -80,6 +101,9 @@ return array(
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
-        )
+        ),
+        'strategies' => array(
+          'ViewJsonStrategy'
+        ),
     )
 );
