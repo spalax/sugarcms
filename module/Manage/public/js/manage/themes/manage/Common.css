@@ -1,3 +1,13 @@
 .Common {
     
 }
+
+.dojoDndItemOver.dojoDndItemAfter {
+    border-bottom: 3px ridge black;
+}
+.dojoDndItemOver.dojoDndItemBefore {
+    border-top: 3px ridge black;
+}
+.dojoDndItem {
+    margin: 20px;
+}
