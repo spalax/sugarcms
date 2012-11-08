@@ -8,6 +8,23 @@
 .dojoDndItemOver.dojoDndItemBefore {
     border-top: 3px ridge black;
 }
+
+.dojoDndItem .spaceTop {
+    width: 150px;
+    height: 30px;
+}
+
+.dojoDndItem .spaceBottom {
+    width: 150px;
+    height: 30px;
+}
+
 .dojoDndItem {
     margin: 20px;
+}
+
+.dojoDndHandle {
+    width: 50px;
+    height: 30px;
+    border: 1px ridge black;
 }

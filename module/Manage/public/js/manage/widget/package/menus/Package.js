@@ -7,7 +7,7 @@ define([
     return declare([ _Package ], {
         // summary:
         //      Menu package. Will provide to user abilities to add menus to the system
-        //      and connect menus and html pages.
+        //      and connect menus and HTML pages.
         getPages: function () {
             try {
                 return [ "list/Container" ]; //String[]

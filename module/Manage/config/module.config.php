@@ -9,47 +9,7 @@
 namespace Manage;
 
 return array(
-    'router' => array(
-        'routes' => array(
-            'manage-default' => array(
-                'type' => 'Zend\Mvc\Router\Http\Segment',
-                'options' => array(
-                    'route' => '/manage[/:controller[.:format][/:id]]',
-                    'constraints' => array(
-                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'format' => 'json',
-                        'id' => '[a-zA-Z0-9_-]*'
-                    ),
-                    'defaults' => array(
-                        'module' => 'manage',
-                        'controller' => 'home',
-                        'format' => 'json'
-                    )
-                )
-            ),
-            'manage-login' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/manage/login',
-                    'defaults' => array(
-                          'controller' => 'login'
-                    )
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'login' => array(
-                        'type' => 'Zend\Mvc\Router\Http\Literal',
-                        'options' => array(
-                            'route'    => '/in',
-                            'defaults' => array(
-                                'controller' => 'login/in'
-                            )
-                        )
-                    )
-                )
-            )
-        )
-    ),
+    'router' => include __DIR__ . '/module/router.config.php',
     'doctrine' => array(
         'driver' => array(
             __NAMESPACE__ . '_driver' => array(
@@ -84,7 +44,8 @@ return array(
             'home' => 'Manage\Controller\HomeController',
             'routes' => 'Manage\Controller\RoutesController',
             'login' => 'Manage\Controller\Login\FormController',
-            'login/in' => 'Manage\Controller\Login\InController'
+            'login/in' => 'Manage\Controller\Login\InController',
+            'menus' => 'Manage\Controller\Menus\IndexController'
         )
     ),
     'view_manager' => array(
