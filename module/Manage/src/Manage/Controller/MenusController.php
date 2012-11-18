@@ -1,5 +1,7 @@
 <?php
-namespace Manage\Controller\Menus;
+namespace Manage\Controller;
+
+use MilcrewDeveloper\Utility;
 
 use Zend\Config\Factory;
 
@@ -8,27 +10,21 @@ use Zend\View\Model\JsonModel;
 use Zend\Json\Server\Response;
 use Zend\Mvc\Controller\AbstractRestfulController;
 
-class IndexController extends AbstractRestfulController
+class MenusController extends AbstractRestfulController
 {
     /* (non-PHPdoc)
      * @see Zend\Mvc\Controller.AbstractRestfulController::getList()
      */
     public function getList()
     {
-        $json = new JsonModel(Factory::fromFile(__DIR__.'/test.json'));
-        return $json;
+
     }
 
     /* (non-PHPdoc)
      * @see Zend\Mvc\Controller.AbstractRestfulController::get()
      */
-    public function get($id)
-    {
-        $json = new JsonModel(array(
-            'some_parameter' => 'some value',
-            'error'=>true,
-        ));
-
+    public function get($id) {
+        $json = new JsonModel(Factory::fromFile(__DIR__.'/test.json'));
         return $json;
     }
 

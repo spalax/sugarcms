@@ -4,7 +4,8 @@ return array(
         'Manage',
         'DoctrineORMModule',
         'DoctrineModule',
-        'ZendDeveloperTools'
+        'ZendDeveloperTools',
+    	'MilcrewDeveloper'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
@@ -12,7 +13,7 @@ return array(
         ),
         'module_paths' => array(
             './module',
-            './vendor',
+            './vendor'
         ),
     ),
 );

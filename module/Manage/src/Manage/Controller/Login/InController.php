@@ -21,8 +21,6 @@ class InController extends AbstractController
      */
     public function onDispatch(MvcEvent $e)
     {
-        print_r("FUUUUUUUUUUUUCCCCCKKKKKKK");
-        exit(0);
         $actionResponse = new JsonModel();
         return $actionResponse;
     }

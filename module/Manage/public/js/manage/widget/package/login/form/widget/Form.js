@@ -9,7 +9,7 @@ define([
         ], function(declare, ContentPane, _TemplatedMixin, 
                      _WidgetsInTemplateMixin, TextBox, request, template) {
 // module:
-//      manage/widget/login/Form
+//      manage/widget/package/login/form/widget/Form
     return declare([ ContentPane, _TemplatedMixin, _WidgetsInTemplateMixin ], {
         // summary:
         //      This is class for displaying login Form

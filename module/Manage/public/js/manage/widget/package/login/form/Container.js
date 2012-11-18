@@ -3,12 +3,12 @@ define([
     "dojo/_base/lang",
     "dijit/layout/StackContainer",
     "dijit/_TemplatedMixin",
-    "./Form",
+    "./widget/Form",
     "dojo/text!./templates/Container.html"
 ], function(declare, lang, StackContainer, 
              _TemplatedMixin, Form, template) {
 // module:
-//      manage/widget/login/Container
+//      manage/widget/package/login/form/Container
     return declare([ StackContainer, _TemplatedMixin ], {
         templateString: template,
         

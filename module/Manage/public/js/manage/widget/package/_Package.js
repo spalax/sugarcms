@@ -7,11 +7,11 @@ define([
         // summary:
         //      This is a base class for all Packages in manage 
         //      area.
-        getPages: function() {
+        getRoutes: function() {
             // summary:
-            //      Get pages registered the for current packages
+            //      Get routes registered the for current packages
             try {
-                return []; //String[]
+                return []; //Object[]
             } catch (e) {
                 console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
                 throw e;

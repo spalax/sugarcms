@@ -10,7 +10,7 @@ define([
 ], function(declare, lang, Store, Tree, TreeStoreModel, dndSource, 
              _TemplatedMixin) {
  // module:
-//  manage/widget/menu/list/widget/Tree
+//  manage/widget/menus/manage/widget/Menu
     return declare([ Tree ], {
         // summary:
         //      Menu tree. It is implement menu tree which elements could be
@@ -20,14 +20,9 @@ define([
         
         betweenThreshold: 2,
         
-        style: "-webkit-touch-callout: none;" +
-                "-webkit-user-select: none;" +
-                "-khtml-user-select: none;" +
-                "-moz-user-select: none;" +
-                "-ms-user-select: none;" +
-                "user-select: none;",
+        baseClass: 'menuTree',
         
-        // _menuStore: dojo/data/ItemFileWriteStore
+        // _menuStore: [private] dojo/data/ItemFileWriteStore
         //      Store object which will be put to the TreeModelStore
         _menuStore: null,
         
@@ -38,8 +33,9 @@ define([
                 } else {
                     throw "Store not given or invalid store type must be ItemFileWriteStore";
                 }
-                this.model    = new TreeStoreModel({store: this._menuStore, 
-                                                     query: { id: "0" }});
+                
+                this.model = new TreeStoreModel({store: this._menuStore, 
+                                                 query: { id: "0" }});
                 this.inherited(arguments);
             } catch (e) {
                 console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
@@ -56,6 +52,15 @@ define([
             }
         },
         
+        addMenuItem: function () {
+            try {
+                alert("Menu item");
+            } catch (e) {
+                console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                throw e;
+            }
+        },
+        
         getLabel: function (item) {
             try {
                 var label = this._menuStore.getLabel(item);
@@ -64,8 +69,6 @@ define([
                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                 throw e;
             }
-        },
-        
-        
+        }
     });
 });

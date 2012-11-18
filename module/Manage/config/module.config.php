@@ -39,15 +39,7 @@ return array(
             )
         )
     ),
-    'controllers' => array(
-        'invokables' => array(
-            'home' => 'Manage\Controller\HomeController',
-            'routes' => 'Manage\Controller\RoutesController',
-            'login' => 'Manage\Controller\Login\FormController',
-            'login/in' => 'Manage\Controller\Login\InController',
-            'menus' => 'Manage\Controller\Menus\IndexController'
-        )
-    ),
+	'controllers' => include __DIR__ . '/module/controllers.config.php',
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
