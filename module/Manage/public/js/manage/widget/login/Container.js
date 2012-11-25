@@ -8,7 +8,7 @@ define([
 ], function(declare, lang, StackContainer, 
              _TemplatedMixin, Form, template) {
 // module:
-//      manage/widget/package/login/form/Container
+//      manage/widget/main/package/login/form/Container
     return declare([ StackContainer, _TemplatedMixin ], {
         templateString: template,
         

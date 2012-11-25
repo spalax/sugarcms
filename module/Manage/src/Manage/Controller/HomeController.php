@@ -9,6 +9,7 @@
 
 namespace Manage\Controller;
 
+use MilcrewSugarDeveloper\Utility;
 use Zend\Mvc\Controller\AbstractController;
 use Zend\View\Model\ViewModel;
 use Zend\Mvc\Exception;
@@ -22,7 +23,11 @@ class HomeController extends AbstractController
     public function onDispatch(MvcEvent $e)
     {
         $actionResponse = new ViewModel();
-        $actionResponse->setTemplate('manage/home/index');
+        if (!$e->getRouteMatch()->getParam('login')) {
+            $actionResponse->setTemplate('manage/login/index');
+        } else {
+            $actionResponse->setTemplate('manage/home/index');
+        }
         $e->setResult($actionResponse);
         return $actionResponse;
     }

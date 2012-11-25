@@ -44,6 +44,20 @@ define([
                         throw e;
                     }
                 }));
+
+                this.inherited(arguments);
+            } catch (e) {
+                console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
+                throw e;
+            }
+        },
+
+        startup: function () {
+            // summary:
+            //      In this startup will starting up StackContainer
+            //      and router will be starting as well.
+            try {
+                this.inherited(arguments);
                 router.startup();
             } catch (e) {
                 console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
@@ -84,12 +98,13 @@ define([
                     
                     this._module = route['init'](e);
                     
-                    _self.addChild(this._module); 
+                    _self.addChild(this._module);
+
                     _self.selectChild(this._module);
                     
                     console.debug("Route >>>> ", route['route'], ' loaded');
                 });
-                
+
                 console.debug("Added route to the router ", route, 
                               " and callback ", route['init']);
             } catch (e) {

@@ -5,7 +5,7 @@ define([
     "dijit/_Contained"
 ], function(declare, ContentPane, _Container, _Contained) {
  // module:
- //  manage/widget/package/_PageWidgetsContainer
+ //  manage/widget/main/package/_PageWidgetsContainer
     return declare([ ContentPane, _Container, _Contained ], {
         // summary:
         //      This is base class for widgets who will be preparing as pages.

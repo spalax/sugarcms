@@ -1,10 +1,12 @@
 <div>
     <div data-dojo-attach-point="loginNode" 
          data-dojo-type="dijit/form/TextBox"></div>
-         
-    <div data-dojo-attach-point="passwordNode" 
+
+    <div data-dojo-attach-point="passwordNode"
          data-dojo-type="dijit/form/TextBox" 
          data-dojo-props="type: 'password'"></div>
-         
-    <div data-dojo-attach-event="ondijitclick: _onLogin">Login</div>
+
+    <div data-dojo-attach-point="buttonNode"
+         data-dojo-type="dojox/form/BusyButton"
+         data-dojo-attach-event="onClick: _onLogin">Login</div>
 </div>

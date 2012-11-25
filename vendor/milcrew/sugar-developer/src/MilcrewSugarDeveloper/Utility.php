@@ -1,5 +1,5 @@
 <?php
-namespace MilcrewDeveloper;
+namespace MilcrewSugarDeveloper;
 
 class Utility {
 	/**
@@ -10,7 +10,7 @@ class Utility {
 	 *
 	 * @param mixed
 	 */
-	public static function dump() 
+	public static function dump()
 	{
 		$p = func_get_args();
 		foreach ($p as $arg) {
@@ -18,15 +18,15 @@ class Utility {
 		}
 		exit(0);
 	}
-	
+
 	/**
 	 * @see dump()
 	 * no exit at the end
 	 */
-	public static function dumpAlive() 
+	public static function dumpAlive()
 	{
 		echo "<pre>";
-		
+
 		$i = 1;
 		$args = func_get_args();
 		array_walk_recursive($args, function(&$item, $key){
@@ -40,7 +40,7 @@ class Utility {
 				$item = 'NULL';
 			}
 		});
-		
+
 		foreach ($args as $arg) {
 			echo "VAR ".$i++."\n";
 			print_r($arg);
