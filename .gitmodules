@@ -1,0 +1,18 @@
+[submodule "public/js/library/dojo"]
+	path = public/js/library/dojo
+	url = git://github.com/dojo/dojo.git
+[submodule "public/js/library/dijit"]
+	path = public/js/library/dijit
+	url = git://github.com/dojo/dijit.git
+[submodule "public/js/library/dojox"]
+	path = public/js/library/dojox
+	url = git://github.com/dojo/dojox.git
+[submodule "public/js/library/dgrid"]
+	path = public/js/library/dgrid
+	url = git://github.com/SitePen/dgrid.git
+[submodule "public/js/library/xstyle"]
+	path = public/js/library/xstyle
+	url = git://github.com/kriszyp/xstyle.git
+[submodule "public/js/library/put-selector"]
+	path = public/js/library/put-selector
+	url = git://github.com/kriszyp/put-selector.git
