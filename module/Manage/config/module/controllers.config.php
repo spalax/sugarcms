@@ -4,6 +4,7 @@ return array(
             'home' => 'Manage\Controller\HomeController',
             'routes' => 'Manage\Controller\RoutesController',
             'login' => 'Manage\Controller\LoginController',
-            'menus' => 'Manage\Controller\MenusController'
+            'menu' => 'Manage\Controller\MenuController',
+            'page' => 'Manage\Controller\PageController'
         )
     );

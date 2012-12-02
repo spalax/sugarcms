@@ -23,11 +23,11 @@ class HomeController extends AbstractController
     public function onDispatch(MvcEvent $e)
     {
         $actionResponse = new ViewModel();
-        if (!$e->getRouteMatch()->getParam('login')) {
-            $actionResponse->setTemplate('manage/login/index');
-        } else {
+        //if (!$e->getRouteMatch()->getParam('login')) {
             $actionResponse->setTemplate('manage/home/index');
-        }
+        /*} else {
+            $actionResponse->setTemplate('manage/login/index');
+        }*/
         $e->setResult($actionResponse);
         return $actionResponse;
     }

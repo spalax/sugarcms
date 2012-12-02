@@ -1,5 +1,8 @@
 [
   {
-    "package": "manage/widget/main/package/menus"
+    "package": "manage/widget/main/package/menu"
+  },
+  {
+    "package": "manage/widget/main/package/page"
   }
 ]

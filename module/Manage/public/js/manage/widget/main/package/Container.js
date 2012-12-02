@@ -18,6 +18,7 @@ define([
             //      Parse JSON files with predefined package configurations.
             //      Collecting routes from package files.
             try {
+                alert("Fuck");
                 var packages = JSON.parse(packagesJSONString);
                 array.forEach(packages, lang.hitch(this, function (pack){
                     try {
