@@ -1,33 +1,29 @@
 define([
     "dojo/_base/declare",
-    "../../_PageWidgetsContainer",
-    "dojo/store/JsonRest",
+    "dojo/_base/array",
+    "../../_PageWidgetsScope",
     "dijit/_TemplatedMixin",
-    "dojo/text!./templates/Container.html"
-], function(declare, _PageWidgetsContainer, 
-            JsonRest, _TemplatedMixin, template) {
+    "dijit/_WidgetsInTemplateMixin",
+    "dojo/text!./templates/Container.html",
+    "dijit/form/Button",
+    "./widget/Grid"
+], function(declare, array, _PageWidgetsScope, _TemplatedMixin, 
+            _WidgetsInTemplateMixin, template) {
     // module:
     //      manage/widget/main/package/page/list/Container
-    return declare([ _PageWidgetsContainer, _TemplatedMixin ], {
+    return declare([ _PageWidgetsScope, _TemplatedMixin, _WidgetsInTemplateMixin], {
         //  summary:
         //      List container. Contains widgets who responsible for
         //      displaying list of pages.
         templateString: template,
+        deletePageLabel: 'Delete Page',
+        baseClass: 'pageList',
         
-        baseClass: 'page list',
-        
-        postMixInProperties: function () {
-            
-        },
-        
-        postCreate: function() {
-            // summary:
-            //      Creating store with data from back-end and initialize Container widget
-            //      with requested data.
+        _onDeletePage: function () {
             try {
-                this._listStore = new JsonRest({url: "/manage/page"});
+                this.gridWidget.grid.removeSelected();
             } catch (e) {
-                console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
+                console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                 throw e;
             }
         }

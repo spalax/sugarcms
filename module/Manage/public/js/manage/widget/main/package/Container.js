@@ -18,7 +18,6 @@ define([
             //      Parse JSON files with predefined package configurations.
             //      Collecting routes from package files.
             try {
-                alert("Fuck");
                 var packages = JSON.parse(packagesJSONString);
                 array.forEach(packages, lang.hitch(this, function (pack){
                     try {
@@ -89,21 +88,29 @@ define([
                 if (typeof(route['init']) != "function") {
                     throw "Callback must be function";
                 }
+                
                 var _self = this;
                 router.register(route['route'], function (e) {
-                    console.debug("Loading route >>> ", route['route']);
                     
-                    if (this._module) { 
-                        _self.removeChild(this._module);
+                    try {
+                        console.debug("Loading route >>> ", route['route']);
+    
+                        var _module = route['init'](e);
+                        
+                        _self.addChild(_module);
+                        _self.selectChild(_module);
+                        
+                        var __conn = dojo.connect(_module, 'onHide', function (){
+                            dojo.disconnect(__conn);
+                            _self.removeChild(_module);
+                            _module.destroyRecursive();
+                        });
+    
+                        console.debug("Route >>>> ", route['route'], ' loaded');
+                    } catch (e) {
+                        console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                        throw e;
                     }
-                    
-                    this._module = route['init'](e);
-                    
-                    _self.addChild(this._module);
-
-                    _self.selectChild(this._module);
-                    
-                    console.debug("Route >>>> ", route['route'], ' loaded');
                 });
 
                 console.debug("Added route to the router ", route, 

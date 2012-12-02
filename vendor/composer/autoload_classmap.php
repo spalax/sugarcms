@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'ZendDeveloperTools\\Module' => $baseDir . '/vendor/zendframework/zend-developer-tools/Module.php',
     'MilcrewSugarDeveloper\\Module' => $baseDir . '/vendor/milcrew/sugar-developer/Module.php',
+    'MilcrewSugarZfExtension\\Module' => $baseDir . '/vendor/milcrew/sugar-zf-extension/Module.php',
 );

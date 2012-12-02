@@ -5,8 +5,8 @@
         <meta charset="utf-8">
         <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
         <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
-	    <link id="themeStyles" rel="stylesheet" href="<?=$this->serverUrl()?>/js/library/dojo/dijit/themes/claro/claro.css"/>
-	    <link id="themeStyles" rel="stylesheet" href="<?=$this->serverUrl()?>/js/library/dojo/dojo/resources/dnd.css"/>
+	    <link id="themeStyles" rel="stylesheet" href="<?=$this->serverUrl()?>/js/library/dijit/themes/claro/claro.css"/>
+	    <link id="themeStyles" rel="stylesheet" href="<?=$this->serverUrl()?>/js/library/dojo/resources/dnd.css"/>
 	    <link id="themeStyles" rel="stylesheet" href="<?=$this->serverUrl()?>/js/module/manage/themes/manage/manage.css"/>
     </head>
     <body class="claro">
@@ -22,8 +22,12 @@
                         location: "<?=$this->serverUrl()?>/js/module/manage"
                     },
                     {
-                        name: "sugar",
-                        location: "<?=$this->serverUrl()?>/js/library/sugar"
+                        name: "dgrid",
+                        location: "<?=$this->serverUrl()?>/js/library/dgrid"
+                    },
+                    {
+                        name: "put-selector",
+                        location: "<?=$this->serverUrl()?>/js/library/put-selector"
                     }
                 ],
                 // Timeout after 10 seconds
@@ -32,6 +36,6 @@
                 cacheBust: true
             };
         </script>
-        <script src="<?=$this->serverUrl()?>/js/library/dojo/dojo/dojo.js"></script>
+        <script src="<?=$this->serverUrl()?>/js/library/dojo/dojo.js"></script>
     </body>
 </html>

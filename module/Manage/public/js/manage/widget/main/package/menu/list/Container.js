@@ -3,15 +3,15 @@ define([
     "dijit/_Widget",
     "dijit/_Contained",
     "dojo/Evented",
-    "../../_PageWidgetsContainer",
+    "../../_PageWidgetsScope",
     "dojo/store/JsonRest",
     "dijit/_TemplatedMixin",
     "dojo/text!./templates/Container.html"
-], function(declare, _Widget, Evented, _Contained, _PageWidgetsContainer, 
+], function(declare, _Widget, Evented, _Contained, _PageWidgetsScope, 
             JsonRest, _TemplatedMixin, templateContainer) {
     // module:
     //      manage/widget/menu/list/Container
-    return declare([ _PageWidgetsContainer, Evented, _TemplatedMixin ], {
+    return declare([ _PageWidgetsScope, Evented, _TemplatedMixin ], {
         //  summary:
         //      Menu list container. It will load all menus and it is
         //      views

@@ -1,3 +1,11 @@
-<div data-dojo-attach-point="domNode">
-    <div data-dojo-attach-point="containerNode"></div>
+<div data-dojo-attach-point="containerNode">
+    <div class="${baseClass}DeletePage" 
+         data-dojo-attach-point="buttonDeletePageWidget" 
+         data-dojo-type="dijit/form/Button"
+         data-dojo-props="label:'${deletePageLabel}'"
+         data-dojo-attach-event="onClick: _onDeletePage"></div>
+         
+    <div class="${baseClass}Grid" 
+         data-dojo-attach-point="gridWidget" 
+         data-dojo-type="manage/widget/main/package/page/list/widget/Grid"></div>
 </div>

@@ -10,6 +10,7 @@ return array(
     'ZendTest\\' => $vendorDir . '/zendframework/zendframework/tests/',
     'ZendDeveloperTools' => $vendorDir . '/zendframework/zend-developer-tools/src/',
     'MilcrewSugarDeveloper' => $vendorDir . '/milcrew/sugar-developer/src/',
+    'MilcrewSugarZfExtension' => $vendorDir . '/milcrew/sugar-zf-extension/src/',
     'Symfony\\Component\\Console' => $vendorDir . '/symfony/console/',
     'Doctrine\\ORM' => $vendorDir . '/doctrine/orm/lib/',
     'Doctrine\\DBAL\\Migrations' => $vendorDir . '/doctrine/migrations/lib',

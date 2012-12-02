@@ -1,15 +1,15 @@
 define([
     "dojo/_base/declare",
-    "../../_PageWidgetsContainer",
+    "../../_PageWidgetsScope",
     "./widget/Menu",
     "dojo/data/ItemFileWriteStore",
     "dijit/_TemplatedMixin",
     "dojo/text!./templates/Container.html"
-], function(declare, _PageWidgetsContainer, Menu, 
+], function(declare, _PageWidgetsScope, Menu, 
             Store, _TemplatedMixin, template) {
     // module:
     //      manage/widget/menu/manage/Container
-    return declare([ _PageWidgetsContainer, _TemplatedMixin ], {
+    return declare([ _PageWidgetsScope, _TemplatedMixin ], {
         //  summary:
         //      Menu manage container. Will load the widgets who will be responsible
         //      for displaying specific menu tree.

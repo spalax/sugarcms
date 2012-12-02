@@ -31,7 +31,7 @@ return array(
     'manage-page' => array(
         'type' => 'Zend\Mvc\Router\Http\Segment',
         'options' => array(
-            'route' => '/manage/page[/:id]',
+            'route' => '/manage/page[/:id][/]',
             'constraints' => array(
                 'id'      => '[0-9]+'
             ),

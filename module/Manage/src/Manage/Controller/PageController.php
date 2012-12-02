@@ -9,10 +9,12 @@
  */
 namespace Manage\Controller;
 
+use MilcrewSugarDeveloper\Utility;
+
 use Zend\View\Model\JsonModel;
 
 use Zend\Json\Server\Response;
-use Zend\Mvc\Controller\AbstractRestfulController;
+use MilcrewSugarZfExtension\Mvc\Controller\AbstractRestfulController;
 
 class PageController extends AbstractRestfulController
 {
@@ -21,7 +23,12 @@ class PageController extends AbstractRestfulController
      */
     public function getList()
     {
-        $json = new JsonModel(array(array("name"=>"main")));
+        $json = new JsonModel(array(array("id"=>"1",
+                                          "title"=>"Glorios Page",
+                                          "descr"=>"Very nice page page page page page"),
+                                    array("id"=>"2",
+                                          "title"=>"Wan helsing Page",
+                                          "descr"=>"Very nice page page page page page")));
         return $json;
     }
 
@@ -42,7 +49,8 @@ class PageController extends AbstractRestfulController
      */
     public function create($data)
     {
-
+        $json = new JsonModel(array_merge(array('id'=>5),(array)$data));
+        return $json;
     }
 
     /* (non-PHPdoc)

@@ -1,12 +1,11 @@
 define([
     "dojo/_base/declare",
     "dijit/layout/ContentPane",
-    "dijit/_Container",
     "dijit/_Contained"
-], function(declare, ContentPane, _Container, _Contained) {
+], function(declare, ContentPane, _Contained) {
  // module:
- //  manage/widget/main/package/_PageWidgetsContainer
-    return declare([ ContentPane, _Container, _Contained ], {
+ //  manage/widget/main/package/_PageWidgetsScope
+    return declare([ ContentPane, _Contained ], {
         // summary:
         //      This is base class for widgets who will be preparing as pages.
         onShow: function () {
