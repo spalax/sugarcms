@@ -15,6 +15,7 @@ use Zend\View\Model\JsonModel;
 
 use Zend\Json\Server\Response;
 use MilcrewSugarZfExtension\Mvc\Controller\AbstractRestfulController;
+use Zend\Http\Response as HttpResponse;
 
 class PageController extends AbstractRestfulController
 {
@@ -66,6 +67,6 @@ class PageController extends AbstractRestfulController
      */
     public function delete($id)
     {
-
+       return $this->getResponse()->setStatusCode(400);
     }
 }

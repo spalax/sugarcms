@@ -9,7 +9,7 @@
  */
 namespace Manage\Controller;
 
-use MilcrewDeveloper\Utility;
+use MilcrewSugarDeveloper\Utility;
 
 use Zend\View\Model\JsonModel;
 

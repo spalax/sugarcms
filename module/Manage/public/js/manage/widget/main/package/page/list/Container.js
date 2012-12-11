@@ -21,7 +21,7 @@ define([
         
         _onDeletePage: function () {
             try {
-                this.gridWidget.grid.removeSelected();
+                this.gridWidget.removeSelected();
             } catch (e) {
                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                 throw e;
