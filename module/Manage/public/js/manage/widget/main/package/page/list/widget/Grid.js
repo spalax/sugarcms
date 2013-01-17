@@ -13,10 +13,12 @@ define([
     "sugarcms/dgrid/_ListAdapterSelection",
     "dgrid/Keyboard",
     "sugarcms/dgrid/_SelectionWithRemoveFromStore",
-    "dijit/form/Button"
+    "dijit/form/Button",
+    "dojo/i18n!../../nls/List"
 ], function(declare, lang, registry, JsonRest, Observable, Cache, Memory,
             put, OnDemandList, _ListCustomRowsWidget, ListAdapter,
-            _ListAdapterSelection, Keyboard, _SelectionWithRemoveFromStore, Button) {
+            _ListAdapterSelection, Keyboard, _SelectionWithRemoveFromStore, Button,
+            translation) {
 
     // module:
     //      manage/widget/main/package/page/list/widget/Grid
@@ -48,7 +50,7 @@ define([
                 put(divWithTemplate, "div[class='title']", obj.title);
                 put(divWithTemplate, "div[class='descr']", obj.descr);
                 put(mainDiv, divWithTemplate);
-                (new Button({'label': "Click me"})).placeAt(mainDiv);
+                (new Button({'label': translation["removeButton"]})).placeAt(mainDiv);
                 return mainDiv;
             } catch (e) {
                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);

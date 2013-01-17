@@ -4,22 +4,16 @@ define([
     "dojo/data/ItemFileWriteStore",
     "dijit/Tree",
     "dijit/tree/TreeStoreModel",
-    "dijit/tree/dndSource",
-    "dijit/_TemplatedMixin",
-    "dijit/_WidgetsInTemplateMixin"
-], function(declare, lang, Store, Tree, TreeStoreModel, dndSource, 
-             _TemplatedMixin) {
+    "dijit/tree/dndSource"
+], function(declare, lang, Store, Tree, TreeStoreModel, dndSource) {
  // module:
 //  manage/widget/menu/manage/widget/Menu
     return declare([ Tree ], {
         // summary:
         //      Menu tree. It is implement menu tree which elements could be
         //      dragged thru branches, and will be stylized like menu with items.
-        
         dndController: dndSource,
-        
         betweenThreshold: 2,
-        
         baseClass: 'menuTree',
         
         // _menuStore: [private] dojo/data/ItemFileWriteStore

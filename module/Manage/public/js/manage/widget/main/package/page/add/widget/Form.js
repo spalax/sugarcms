@@ -2,15 +2,26 @@ define([
     "dojo/_base/declare",
     "dijit/form/Form",
     "dijit/_WidgetsInTemplateMixin",
-    "dojo/text!./templates/Form.html"
-], function(declare, Form, _WidgetsInTemplateMixin, template) {
+    "dojo/text!./templates/Form.html",
+    "dojo/i18n!../../nls/Add",
+    "dijit/Editor",
+    "dijit/form/TextBox",
+    "dijit/_editor/plugins/AlwaysShowToolbar",
+    "dojox/editor/plugins/LocalImage"
+], function(declare, Form, _WidgetsInTemplateMixin, template, translation) {
     // module:
     //      manage/widget/main/package/page/add/widget/Form
     return declare([ Form, _WidgetsInTemplateMixin ], {
         //  summary:
         //      Form widget for adding page to the CMS database
+
+
         templateString: template,
-        
+
+        // _t: [const] Object
+        //      Contains dictionary with translations
+        _t: translation,
+
         postCreate: function() {
             try {
                 

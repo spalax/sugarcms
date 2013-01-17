@@ -67,6 +67,6 @@ class PageController extends AbstractRestfulController
      */
     public function delete($id)
     {
-       return $this->getResponse()->setStatusCode(400);
+       return $this->getResponse()->setStatusCode(200);
     }
 }

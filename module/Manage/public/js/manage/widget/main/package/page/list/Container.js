@@ -5,10 +5,11 @@ define([
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
     "dojo/text!./templates/Container.html",
+    "dojo/i18n!../nls/List",
     "dijit/form/Button",
     "./widget/Grid"
 ], function(declare, array, _PageWidgetsScope, _TemplatedMixin, 
-            _WidgetsInTemplateMixin, template) {
+            _WidgetsInTemplateMixin, template, translation) {
     // module:
     //      manage/widget/main/package/page/list/Container
     return declare([ _PageWidgetsScope, _TemplatedMixin, _WidgetsInTemplateMixin], {
@@ -16,7 +17,11 @@ define([
         //      List container. Contains widgets who responsible for
         //      displaying list of pages.
         templateString: template,
-        deletePageLabel: 'Delete Page',
+
+        // _t: [const] Object
+        //      Contains dictionary with translations
+        _t: translation,
+
         baseClass: 'pageList',
         
         _onDeletePage: function () {

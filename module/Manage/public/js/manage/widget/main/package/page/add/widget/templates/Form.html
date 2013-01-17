@@ -1,5 +1,43 @@
-<form data-dojo-attach-point='containerNode' 
-      data-dojo-attach-event='onreset:_onReset,onsubmit:_onSubmit' 
-      ${!nameAttrSetting}>
-      <input class="${baseClass}Name" data-dojo-type='dijit/form/TextBox' data-dojo-props='name:"name"' />
+<form data-dojo-attach-point="containerNode"
+      data-dojo-attach-event="onreset:_onReset, onsubmit:_onSubmit">
+    ${!_t.nameLabel}
+    <input class="${baseClass}Name" data-dojo-type="dijit/form/TextBox" data-dojo-props='name:"name"' />
+    ${!_t.nameHelp}
+
+    ${!_t.routeLabel}
+    <input class="${baseClass}Route" data-dojo-type="dijit/form/TextBox" data-dojo-props='name:"route"' />
+    ${!_t.routeHelp}
+
+    ${!_t.descriptionLabel}
+    <input class="${baseClass}Description" data-dojo-type="dijit/form/TextBox" data-dojo-props='name:"descr"' />
+    ${!_t.descriptionHelp}
+
+    ${!_t.titleLabel}
+    <input class="${baseClass}Title" data-dojo-type="dijit/form/TextBox" data-dojo-props='name:"title"' />
+    ${!_t.titleHelp}
+
+    ${!_t.bodyLabel}
+    <div class="${baseClass}Editor"
+         data-dojo-type="dijit/Editor"
+         data-dojo-props="extraPlugins:['dijit/_editor/plugins/AlwaysShowToolbar',
+                                        {name: 'LocalImage',
+                                         uploadable: true,
+                                         uploadUrl: '../../form/tests/UploadFile.php',
+                                         baseImageUrl: '../../form/tests/'}],
+                          styleSheets:'../../themes/claro/document.css',
+                          minHeight:'75px',
+                          height:''">
+    </div>
+    ${!_t.bodyHelp}
+
+    <input class="${baseClass}AddButton"
+           data-dojo-type="dijit/form/Button"
+           data-dojo-props='name:"send",
+                            label:"${!_t.addButton}"' />
+
+    <input class="${baseClass}ResetButton"
+           data-dojo-type="dijit/form/Button"
+           data-dojo-attach-event="onClick: reset"
+           data-dojo-props='name:"reset",
+                            label:"${!_t.resetButton}"' />
 </form>
