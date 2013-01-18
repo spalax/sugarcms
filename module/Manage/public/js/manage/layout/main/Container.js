@@ -1,5 +1,7 @@
 define([
-    "../StackContainer",
+    "dijit/_Widget",
+    "dijit/_Contained",
+    "dijit/_Container",
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/_base/array",
@@ -14,12 +16,12 @@ define([
     "dojo/text!./resources/packages/Rounded.json",
     "dojo/text!./resources/packages/Toolbar.json",
     "dojo/text!./templates/Container.html"
-], function(StackContainer, declare, lang, array, router,
+], function(_Widget, _Contained, _Container, declare, lang, array, router,
             _TemplatedMixin, _Package, JSON, ContentContainer,
             RoundedContainer, ToolbarContainer,
             contentPackagesJSONString, roundedPackagesJSONString,
             toolbarPackagesJSONString, template) {
-    return declare([ StackContainer, _TemplatedMixin ], {
+    return declare([ _Widget, _Contained, _Container, _TemplatedMixin ], {
         templateString:  template,
 
         postCreate: function() {
@@ -27,18 +29,18 @@ define([
             //      Parse JSON files with predefined package configurations.
             //      Collecting routes from package files.
             try {
-                var routes = this._getRoutes(JSON.parse(contentPackagesJSONString));
-                this.addChild(new ContentContainer({routes: routes}));
-                console.debug("Loaded ContentContainer with routes", routes);
-
+            	routes = this._getRoutes(JSON.parse(toolbarPackagesJSONString));
+                this.addChild(new ToolbarContainer({routes: routes}));
+                console.debug("Loaded ToolbarContainer with routes", routes);
+            	
                 routes = this._getRoutes(JSON.parse(roundedPackagesJSONString));
                 this.addChild(new RoundedContainer({routes: routes}));
                 console.debug("Loaded RoundedContainer with routes", routes);
 
-                routes = this._getRoutes(JSON.parse(toolbarPackagesJSONString));
-                this.addChild(new ToolbarContainer({routes: routes}));
-                console.debug("Loaded ToolbarContainer with routes", routes);
-
+                var routes = this._getRoutes(JSON.parse(contentPackagesJSONString));
+                this.addChild(new ContentContainer({routes: routes}));
+                console.debug("Loaded ContentContainer with routes", routes);
+                
                 this.inherited(arguments);
             } catch (e) {
                 console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);

@@ -6,7 +6,7 @@ define([
     "dojo/router",
     "dijit/_TemplatedMixin",
     "dojo/json",
-    "dojo/text!./templates/Container.html"
+    "dojo/text!./templates/Toolbar.html"
 ], function(StackContainer, declare, lang, array, router, _TemplatedMixin, JSON, template) {
     return declare([ StackContainer, _TemplatedMixin ], {
         templateString:  template,
