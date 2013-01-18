@@ -3,6 +3,7 @@
 
 */
 
-@import url("Login.css");
 @import url("Common.css");
+@import url("Login.css");
+@import url("Normalize.css");
 @import url("package/Menus.css");
