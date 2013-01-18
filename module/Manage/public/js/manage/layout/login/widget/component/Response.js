@@ -2,8 +2,7 @@ define([
         "dojo/_base/declare",
         "manage/component/response/Status"
         ], function(declare, Response) {
-// module:
-//      manage/widget/main/package/login/form/widget/component/Response
+
     return declare([ Response ], {
         // summary:
         //      Response for the login form
