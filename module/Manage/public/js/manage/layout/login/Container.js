@@ -24,7 +24,6 @@ define([
                 loginForm.on('LoginFailed', require('dojo/_base/lang').hitch(this, 'emit', 'LoginFailed'));
 
                 this.addChild(loginForm);
-
                 this.inherited(arguments);
             } catch (e) {
                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);

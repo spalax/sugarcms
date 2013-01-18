@@ -65,6 +65,7 @@ define([
             //      Method switch user to the LoginContainer
             //      and force him to login one more time.
             try {
+                console.debug("Switch to Login screen");
                 var _self = this;
                 this.selectChild(this._loginContainer);
 
@@ -91,6 +92,7 @@ define([
             // summary:
             //      Method will switch user to the MainContainer
             try {
+                console.debug("Switch to Main screen");
                 this._selectMainContainerChild();
             } catch (e) {
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);

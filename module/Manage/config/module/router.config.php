@@ -4,12 +4,19 @@ return array(
     'manage-default' => array(
         'type' => 'Zend\Mvc\Router\Http\Segment',
         'options' => array(
-            'route' => '/manage[/:login]',
+            'route' => '/manage[/]',
             'constraints' => array(
                  'login' => '[0-9]+'
             ),
             'defaults' => array('controller' => 'home')
         )
+    ),
+    'manage-login' => array(
+      'type' => 'Zend\Mvc\Router\Http\Segment',
+      'options' => array(
+          'route' => '/manage/login.json',
+          'defaults' => array('controller' => 'login')
+      )
     ),
     'manage-menu' => array(
         'type' => 'Zend\Mvc\Router\Http\Segment',
