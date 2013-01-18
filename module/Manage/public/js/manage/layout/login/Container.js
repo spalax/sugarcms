@@ -1,19 +1,21 @@
 define([
     "dojo/_base/declare",
-    "dijit/layout/StackContainer",
+    "dijit/_Widget",
+    "dijit/_Container",
+    "dijit/_Contained",
     "dijit/_TemplatedMixin",
     "./widget/Form",
     "dojo/Evented",
     "dojo/text!./templates/Container.html"
-], function(declare, StackContainer,
-             _TemplatedMixin, LoginForm, Evented, template) {
+], function(declare, _Widget, _Container,
+             _Contained, _TemplatedMixin, LoginForm,
+             Evented, template) {
 
-    return declare([ StackContainer, Evented, _TemplatedMixin ], {
+    return declare([ _Widget, _Container, Evented, _Contained, _TemplatedMixin ], {
         // summary:
         //      This is container for displaying login page with
         //      all it is states.
         //      This container produce events LoginSuccess and LoginFailed
-
         templateString: template,
 
         postCreate: function () {

@@ -1,24 +1,60 @@
 define([
-    "dijit/layout/StackContainer",
+    "../StackContainer",
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/_base/array",
     "dojo/router",
     "dijit/_TemplatedMixin",
+    "./_Package",
     "dojo/json",
-    "./package/_Package",
-    "dojo/text!./resources/Packages.json",
+    "./Content",
+    "./Rounded",
+    "./Toolbar",
+    "dojo/text!./resources/packages/Content.json",
+    "dojo/text!./resources/packages/Rounded.json",
+    "dojo/text!./resources/packages/Toolbar.json",
     "dojo/text!./templates/Container.html"
-], function(StackContainer, declare, lang, array, router, _TemplatedMixin, JSON, 
-            _Package, packagesJSONString, template) {
+], function(StackContainer, declare, lang, array, router,
+            _TemplatedMixin, _Package, JSON, ContentContainer,
+            RoundedContainer, ToolbarContainer,
+            contentPackagesJSONString, roundedPackagesJSONString,
+            toolbarPackagesJSONString, template) {
     return declare([ StackContainer, _TemplatedMixin ], {
         templateString:  template,
+
         postCreate: function() {
             // summary:
             //      Parse JSON files with predefined package configurations.
             //      Collecting routes from package files.
             try {
-                var packages = JSON.parse(packagesJSONString);
+                var routes = this._getRoutes(JSON.parse(contentPackagesJSONString));
+                this.addChild(new ContentContainer({routes: routes}));
+                console.debug("Loaded ContentContainer with routes", routes);
+
+                routes = this._getRoutes(JSON.parse(roundedPackagesJSONString));
+                this.addChild(new RoundedContainer({routes: routes}));
+                console.debug("Loaded RoundedContainer with routes", routes);
+
+                routes = this._getRoutes(JSON.parse(toolbarPackagesJSONString));
+                this.addChild(new ToolbarContainer({routes: routes}));
+                console.debug("Loaded ToolbarContainer with routes", routes);
+
+                this.inherited(arguments);
+            } catch (e) {
+                console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
+                throw e;
+            }
+        },
+
+        _getRoutes: function (packages) {
+            // summary:
+            //      Walking thru packages array and
+            //      extracting routes from every package.
+            //      Collect them and return.
+            // returns:
+            //      Array of collected routes
+            try {
+                var routes = [];
                 array.forEach(packages, lang.hitch(this, function (pack){
                     try {
                         if (!pack['package']) {
@@ -31,9 +67,12 @@ define([
                                 if (!packageObject.isInstanceOf(_Package)) {
                                     throw "Loading package is not compatible with type _Package";
                                 }
-                                var routes = packageObject.getRoutes();
-                                console.debug("Array with routes ", routes," was read from package ", pack['package']);
-                                array.forEach(routes, lang.hitch(this, '_registerNewRoute'));
+                                var _routes = packageObject.getRoutes();
+                                console.debug("Array with routes ", _routes,
+                                    " was read from package ", pack['package']);
+                                array.forEach(_routes, function (route){
+                                    routes.push(route);
+                                });
                             } catch (e) {
                                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                                 throw e;
@@ -44,11 +83,10 @@ define([
                         throw e;
                     }
                 }));
-
-                this.inherited(arguments);
+                return routes;
             } catch (e) {
-                console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
-                throw e;
+                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                 throw e;
             }
         },
 
@@ -61,62 +99,6 @@ define([
                 router.startup();
             } catch (e) {
                 console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
-                throw e;
-            }
-        },
-        
-        _registerNewRoute: function (route) {
-            // summary:
-            //      Registering route as new one to the router. 
-            //      Route must feet required format, if so then
-            //      it is will added to the router and when
-            //      user will request path from router will
-            //      be callback called.
-            //
-            // route: Object
-            //      Object who contains URL of the route and callback
-            //      which will associate URL and init from this unit..
-            try {
-                console.debug("Route loaded ", route, " and type ");
-                if (!array.every(['route', 'init'], function (key){
-                    return typeof(route[key]) != 'undefined';
-                })) {
-                    throw "Route array has incopatible format. It is must containes keys route and" +
-                          " callback";
-                }
-                
-                if (typeof(route['init']) != "function") {
-                    throw "Callback must be function";
-                }
-                
-                var _self = this;
-                router.register(route['route'], function (e) {
-                    
-                    try {
-                        console.debug("Loading route >>> ", route['route']);
-    
-                        var _module = route['init'](e);
-                        
-                        _self.addChild(_module);
-                        _self.selectChild(_module);
-                        
-                        var __conn = dojo.connect(_module, 'onHide', function (){
-                            dojo.disconnect(__conn);
-                            _self.removeChild(_module);
-                            _module.destroyRecursive();
-                        });
-    
-                        console.debug("Route >>>> ", route['route'], ' loaded');
-                    } catch (e) {
-                        console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
-                        throw e;
-                    }
-                });
-
-                console.debug("Added route to the router ", route, 
-                              " and callback ", route['init']);
-            } catch (e) {
-                console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                 throw e;
             }
         }

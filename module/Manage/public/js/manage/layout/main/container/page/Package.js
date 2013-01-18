@@ -1,11 +1,10 @@
 define([
         "dojo/_base/declare",
-        "../_Package",
+        "../../_Package",
         "./list/Container",
         "./add/Container"
         ], function(declare, _Package, ListContainer, AddContainer) {
-// module:
-//      manage/widget/page/Package
+
     return declare([ _Package ], {
         // summary:
         //      Menu package. Will provide to user abilities to add menus to the system

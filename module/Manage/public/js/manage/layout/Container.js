@@ -1,5 +1,5 @@
 define([
-    "dijit/layout/StackContainer",
+    "./StackContainer",
     "./login/Container",
     "./main/Container"
 ], function(StackContainer, LoginContainer, MainContainer) {

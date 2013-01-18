@@ -9,8 +9,7 @@ define([
     "dijit/_editor/plugins/AlwaysShowToolbar",
     "dojox/editor/plugins/LocalImage"
 ], function(declare, Form, _WidgetsInTemplateMixin, template, translation) {
-    // module:
-    //      manage/widget/main/package/page/add/widget/Form
+
     return declare([ Form, _WidgetsInTemplateMixin ], {
         //  summary:
         //      Form widget for adding page to the CMS database

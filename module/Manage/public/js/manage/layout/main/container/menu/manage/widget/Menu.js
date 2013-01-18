@@ -6,8 +6,7 @@ define([
     "dijit/tree/TreeStoreModel",
     "dijit/tree/dndSource"
 ], function(declare, lang, Store, Tree, TreeStoreModel, dndSource) {
- // module:
-//  manage/widget/menu/manage/widget/Menu
+
     return declare([ Tree ], {
         // summary:
         //      Menu tree. It is implement menu tree which elements could be

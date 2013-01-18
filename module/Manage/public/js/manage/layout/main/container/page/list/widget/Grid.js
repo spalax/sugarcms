@@ -20,8 +20,6 @@ define([
             _ListAdapterSelection, Keyboard, _SelectionWithRemoveFromStore, Button,
             translation) {
 
-    // module:
-    //      manage/widget/main/package/page/list/widget/Grid
     var _store = Observable(Cache(JsonRest({
         target: "/manage/page/",
         idProperty: "id"

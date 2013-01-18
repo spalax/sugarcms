@@ -4,8 +4,7 @@ define([
     "../Menu",
     "dijit/form/Button"
 ], function(declare, lang, Menu, Button) {
-// module:
-//      manage/widget/menu/manage/widget/menu/AddItemButton
+
     return declare([ Button ], {
         // summary:
         //      It is extend default button with behavior of the 

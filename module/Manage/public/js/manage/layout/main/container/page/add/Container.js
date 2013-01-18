@@ -8,8 +8,7 @@ define([
 ], function(declare, _PageWidgetsScope, 
             JsonStore, _TemplatedMixin,
             Form, template) {
-    // module:
-    //      manage/widget/main/package/page/add/Container
+
     return declare([ _PageWidgetsScope, _TemplatedMixin ], {
         //  summary:
         //      Add container. Contains widgets who responsible

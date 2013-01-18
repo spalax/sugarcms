@@ -1,8 +1,6 @@
 define([
     "dojo/_base/declare"
 ], function(declare) {
-// module:
-//      manage/widget/main/package/_Package
     return declare(null, {
         // summary:
         //      This is a base class for all Packages in manage 
