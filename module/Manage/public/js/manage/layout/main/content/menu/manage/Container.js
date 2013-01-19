@@ -29,7 +29,7 @@ define([
         // menuId: Integer
         //      Identifier of the menu to display
         menuId: 0,
-        
+
         postMixInProperties: function () {
             // summary:
             //      Declaring menuId as required constuctor's parameter

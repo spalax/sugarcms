@@ -1,8 +1,8 @@
 [
   {
-    "package": "manage/layout/main/container/menu"
+    "package": "manage/layout/main/content/menu"
   },
   {
-    "package": "manage/layout/main/container/page"
+    "package": "manage/layout/main/content/page"
   }
 ]

@@ -8,12 +8,8 @@ define([
         getRoutes: function() {
             // summary:
             //      Get routes registered the for current packages
-            try {
-                return []; //Object[]
-            } catch (e) {
-                console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
-                throw e;
-            }
+            // returns:
+            //      Array of route objects
         }
     });
 });
