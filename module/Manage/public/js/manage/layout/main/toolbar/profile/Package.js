@@ -1,47 +1,36 @@
 define(["dojo/_base/declare",
-        "../../package",
+        "dojo/_base/lang",
+        "../package",
         "../../route",
+        "dijit/form/DropDownButton",
         "./dropdown/Container"],
-    function(declare, _Package, route, DropDownContainer) {
+    function(declare, lang, _Package, route, DropDownButton, DropDownContainer) {
 
-    var entryRoute = declare([ route.route, route.toolbar.contained ], {
-
+    var entryRoute = declare("EntryRoute", [ route.route ], {
             getRoute: function () {
                 // see: route.route::getRoute
                 return '/my/profile';
-            },
-
-            createObject: function () {
-                // see: route.toolbar.contained::createObject
-                try {
-                    return new DropDownContainer();
-                } catch (e) {
-                     console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
-                     throw e;
-                }
-            },
-
-            handle: function () {
-                // see: route.route::handle
-                try {
-                    this.getInstance().openDropDown();
-                } catch (e) {
-                     console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
-                     throw e;
-                }
             }
-    });
+        });
 
-    return declare([ _Package ], {
+    return declare("ProfilePackage", [ DropDownButton, _Package ], {
         // summary:
         //      Profile package. Will provide user abilities to configure
         //      his profile.
-        getRoutes: function () {
+
+        iconClass: 'icon profile',
+        dropDown: new DropDownContainer(),
+
+        postMixInProperties: function () {
             try {
-                return [ entryRoute ]; //./route[]
+                var entry = new entryRoute();
+                entry.on('handle', lang.hitch(this, 'openDropDown'));
+                this.routes.push(entry);
+
+                this.inherited(arguments);
             } catch (e) {
-                console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
-                throw e;
+                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                 throw e;
             }
         }
     });

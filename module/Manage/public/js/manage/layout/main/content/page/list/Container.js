@@ -15,7 +15,6 @@ define([
         //      List container. Contains widgets who responsible for
         //      displaying list of pages.
         templateString: template,
-
         baseClass: 'pageList',
         
         postCreate: function () {
@@ -27,6 +26,15 @@ define([
                                           'onClick': lang.hitch(this, '_onDeletePage')}));
 
                 this.addChild(this._gridWidget);
+            } catch (e) {
+                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                 throw e;
+            }
+        },
+
+        refresh: function () {
+            try {
+                this._gridWidget.refresh();
             } catch (e) {
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                  throw e;

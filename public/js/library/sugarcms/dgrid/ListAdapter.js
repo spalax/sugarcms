@@ -63,6 +63,17 @@ define([
             }
         },
 
+        refresh: function () {
+            // summary:
+            //      Proxy for refresh in List
+            try {
+               return this._list.refresh();
+            } catch (e) {
+                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                 throw e;
+            }
+        },
+
         destroy: function () {
             // summary:
             //      Manually destroy created list

@@ -1,11 +1,12 @@
 define([
     "dijit/Toolbar",
     "dojo/_base/declare",
+    "./_PackageMixin",
     "dijit/_TemplatedMixin",
     "dojo/text!./templates/Toolbar.html"
-], function(Toolbar, declare, _TemplatedMixin, template) {
+], function(Toolbar, declare, _PackageMixin, _TemplatedMixin, template) {
 
-    return declare( [ Toolbar, _TemplatedMixin ], {
+    return declare("main.Toolbar", [ Toolbar, _PackageMixin, _TemplatedMixin ], {
         templateString:  template
     });
 });

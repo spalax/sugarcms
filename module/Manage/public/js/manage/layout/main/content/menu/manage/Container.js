@@ -2,10 +2,12 @@ define([
     "dojo/_base/declare",
     "../../_PageWidgetsScope",
     "./widget/Menu",
+    "dojo/_base/array",
+    "dojo/_base/lang",
     "dojo/data/ItemFileWriteStore",
     "dijit/_TemplatedMixin",
     "dojo/text!./templates/Container.html"
-], function(declare, _PageWidgetsScope, Menu, 
+], function(declare, _PageWidgetsScope, Menu, array, lang,
             Store, _TemplatedMixin, template) {
     // module:
     //      manage/widget/menu/manage/Container
@@ -30,31 +32,21 @@ define([
         //      Identifier of the menu to display
         menuId: 0,
 
-        postMixInProperties: function () {
-            // summary:
-            //      Declaring menuId as required constuctor's parameter
-            try {
-                if (!this.menuId) {
-                    throw "Identifier of the menu must be defined";
-                }
-            } catch (e) {
-                console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
-                throw e;
-            }
-        },
-        
-        postCreate: function() {
+        _setMenuIdAttr: function (menuId) {
             // summary:
             //      Creating store with data from back-end and initialize Menu widget
             //      with requested data.
             try {
-                this._menuStore = new Store({url: "/manage/menu/"+this.menuId});
+                this._menuStore = new Store({url: "/manage/menu/"+menuId});
                 this._menu = new Menu({store: this._menuStore});
-                
+                array.forEach(this.getChildren(), lang.hitch(this, function (child){
+                    this.removeChild(child);
+                    child.destroyRecursive();
+                }));
                 this.addChild(this._menu);
             } catch (e) {
-                console.error(this.declaredClass + " " + arguments.callee.nom, arguments, e);
-                throw e;
+                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                 throw e;
             }
         }
     });

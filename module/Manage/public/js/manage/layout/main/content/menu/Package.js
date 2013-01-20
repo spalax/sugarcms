@@ -1,50 +1,49 @@
 define([
         "dojo/_base/declare",
-        "../../package",
-        "../../route",
+        "../package",
+        "../route",
         "./list/Container",
-        "./manage/Container"
-        ], function(declare, _Package, route, ListContainer, ManageContainer) {
+        "./manage/Container",
+        "dojo/i18n!./nls/Package"
+        ], function(declare, _Package, route, ListContainer, ManageContainer, translation) {
 
-    var menuList = declare([ route.route, route.stack.contained ], {
-        routeClass: ListContainer,
+    var menuList = declare('MenuList', [ route ], {
 
         getRoute: function () {
             // see: route.route::getRoute
             return '/menu';
+        },
+
+        createObject: function () {
+            // see: route::createObject
+            return new ListContainer();
         }
     });
 
-    var menuManage = declare([ route.route, route.stack.contained ], {
-        routeClass: ManageContainer,
+    var menuManage = declare('MenuManage', [ route ], {
 
         getRoute: function () {
             // see: route.stack.contained::getRoute
             return '/menu/manage/:menuId';
         },
 
-        processParams: function (/*Object|undefined*/ params) {
-            // see: route.stack.contained::processParams
-            try {
-                if (!params || !params.menuId) {
-                    throw "Could not found menuId in params";
-                }
-                return params;
-            } catch (e) {
-                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
-                 throw e;
-            }
+        createObject: function () {
+            // see: route::createObject
+            return new ManageContainer();
         }
     });
 
-    return declare([ _Package ], {
+    return declare("MenuPackage", [ _Package ], {
         // summary:
         //      Menu package. Will provide to user abilities to add menus to the system
         //      and connect menus and HTML pages.
+
+        defaultRoute: '/menu/manage/123',
+        title: translation['packageTitle'],
+
         getRoutes: function () {
             try {
-                return [ menuList,
-                         menuManage ]; //String[]
+                return [menuList, menuManage];
             } catch (e) {
                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                 throw e;

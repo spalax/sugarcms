@@ -1,17 +1,11 @@
 define([
-    "../StackContainer",
+    "../TabContainer",
     "dojo/_base/declare",
-    "dojo/_base/lang",
-    "dojo/_base/array",
-    "dojo/router",
-    "dojo/hash",
-    "dojo/on",
-    "dijit/_TemplatedMixin",
-    "dojo/text!./templates/Content.html"
-], function(StackContainer, declare, lang, array, router, hash,
-            on, _TemplatedMixin, template) {
+    "./_PackageMixin"
+], function(TabContainer, declare, _PackageMixin) {
 
-    return declare('main.Content', [ StackContainer, _TemplatedMixin ], {
-        templateString:  template
+    return declare('main.Content', [ TabContainer, _PackageMixin ], {
+        style :"width: 500px; height: 200px;",
+        tabPosition: "left-h"
     });
 });
