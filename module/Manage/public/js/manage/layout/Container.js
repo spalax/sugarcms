@@ -34,7 +34,7 @@ define([
                 });
 
                 this._addLoginContainerChild();
-                this._addMainContainerChild();
+//                this._addMainContainerChild();
 
                 this.inherited(arguments);
             } catch (e) {
