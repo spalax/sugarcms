@@ -6,36 +6,44 @@ define([
     "dojo/aspect",
     "dojo/_base/array",
     "../../StackContainer",
+    "./route",
     "../package"
-], function(declare, ContentPane, hash, lang, aspect, array, StackContainer, _Package) {
-    return declare("ContentPackage", [ ContentPane, _Package ], {
+], function(declare, ContentPane, hash, lang, aspect, array, StackContainer, route, _Package) {
+    return declare("ContentPackage", [ ContentPane,  _Package ], {
+
+        // _container: [privat] dijit.layout.StackContainer
+        _container: null,
 
         postCreate: function () {
             try {
-                var _self = this;
-                var container = new StackContainer();
+                this._container = new StackContainer();
+                this.addChild(this._container);
 
-                array.forEach(this.getRoutes(), function (route){
-                    var routeObject = new route();
-                    routeObject.on('handle', lang.hitch(_self, '_handle', container, routeObject));
-                    _self.routes.push(routeObject);
-                });
-
-                this.addChild(container);
                 this.inherited(arguments);
-
             } catch (e) {
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                  throw e;
             }
         },
 
-        _handle: function (/*dijit.layout.StackContainer*/ container, /*route.route*/ route, /*Object*/ evt) {
+        getRoute: function (/*Object*/ routeParams) {
+            // see: package::getRoute
+            try {
+                var routeObject = new route(routeParams);
+                routeObject.on('handle', lang.hitch(this, 'handle', this._container, routeObject));
+                return routeObject;
+            } catch (e) {
+                console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                throw e;
+            }
+        },
+
+        handle: function (/*dijit.layout.StackContainer*/ container, /*route.route*/ routeObject, /*Object*/ evt) {
             // summary:
             //      Handler for all routes
             try {
                 if (!this._inst) {
-                    this._inst = route.getInstance();
+                    this._inst = routeObject.getInstance();
                     console.debug("Route handled: New instance created >>>", this._inst);
                     container.addChild(this._inst);
 
@@ -45,7 +53,6 @@ define([
 
                 console.debug("Route handled: params >>>", evt);
                 this._inst.attr(evt && evt.params || {});
-
                 container.selectChild(this._inst);
                 this.getParent().selectChild(this);
             } catch (e) {
@@ -66,18 +73,6 @@ define([
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                  throw e;
             }
-        },
-
-        getRoutes: function () {
-            // summary:
-            //      In this method routes are added to
-            //      the routes array
-            // returns:
-            //      Array of route Classes
-            // tags:
-            //      protected
-
-            throw new TypeError("abstract");
         },
 
         registerRoute: function (/*route.route*/ route) {

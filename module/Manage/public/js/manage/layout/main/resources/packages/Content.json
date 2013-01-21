@@ -1,8 +1,23 @@
-[
-  {
-    "package": "manage/layout/main/content/menu"
-  },
-  {
-    "package": "manage/layout/main/content/page"
-  }
-]
+[{
+  "package": "manage/layout/main/content/menu",
+  "routes": [{
+        "uri": "/menu",
+        "module": "manage/layout/main/content/menu/list/Container",
+        "imports": [{
+            "module": "manage/layout/main/content/page/list/Test"
+        }]}, {
+        "uri": "/menu/manage/:menuId",
+        "module": "manage/layout/main/content/menu/manage/Container"
+    }]
+ }, {
+  "package": "manage/layout/main/content/page",
+  "routes": [{
+        "uri": "/page",
+        "module": "manage/layout/main/content/page/list/Container",
+        "imports": [{
+            "module": "manage/layout/main/content/page/list/Test"
+        }]}, {
+        "uri": "/page/add",
+        "module": "manage/layout/main/content/page/add/Container"
+    }]
+}]

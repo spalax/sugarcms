@@ -67,13 +67,12 @@ define([
                             throw "Widget key does not found";
                         }
                         console.debug("Require package ", pack['package']);
-                        require([ pack['package']+"/Package" ], lang.hitch(this, function (Package) {
+                        require([ pack['package']+"/package" ], lang.hitch(this, function (Package) {
                             try {
-                                var packageObject = new Package();
+                                var packageObject = new Package({routeParams: pack['routes']});
                                 if (!packageObject.isInstanceOf(_require('./package'))) {
                                     throw "Loading package is not compatible with type _Package";
                                 }
-
                                 packages.push(packageObject);
                             } catch (e) {
                                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);

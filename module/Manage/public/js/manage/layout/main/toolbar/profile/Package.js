@@ -6,13 +6,6 @@ define(["dojo/_base/declare",
         "./dropdown/Container"],
     function(declare, lang, _Package, route, DropDownButton, DropDownContainer) {
 
-    var entryRoute = declare("EntryRoute", [ route.route ], {
-            getRoute: function () {
-                // see: route.route::getRoute
-                return '/my/profile';
-            }
-        });
-
     return declare("ProfilePackage", [ DropDownButton, _Package ], {
         // summary:
         //      Profile package. Will provide user abilities to configure
@@ -21,16 +14,20 @@ define(["dojo/_base/declare",
         iconClass: 'icon profile',
         dropDown: new DropDownContainer(),
 
-        postMixInProperties: function () {
+        getRoute: function (/*Object*/ routeParams) {
+            // summary:
+            //      Factory method, created
+            //      for provide abilities to overload
+            //      in children.
+            // tags:
+            //      protected
             try {
-                var entry = new entryRoute();
-                entry.on('handle', lang.hitch(this, 'openDropDown'));
-                this.routes.push(entry);
-
-                this.inherited(arguments);
+                var routeObject = new route(routeParams);
+                routeObject.on('handle', lang.hitch(this, 'openDropDown'));
+                return routeObject;
             } catch (e) {
-                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
-                 throw e;
+                console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                throw e;
             }
         }
     });

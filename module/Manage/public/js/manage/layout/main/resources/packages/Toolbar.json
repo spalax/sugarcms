@@ -1,5 +1,11 @@
 [
     {
-        "package": "manage/layout/main/toolbar/profile"
+        "package": "manage/layout/main/toolbar/profile",
+        "routes": [{
+            "uri": "/my/profile",
+            "module": "manage/layout/main/toolbar/profile/dropdown/Container",
+            "imports": [{
+                "module": "manage/layout/main/content/page/list/Test"
+        }]}]
     }
 ]

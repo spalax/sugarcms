@@ -17,14 +17,15 @@ class MenuController extends AbstractRestfulController
      */
     public function getList()
     {
-
+        $json = new JsonModel(Factory::fromFile(__DIR__.'/../../../data/menu/menus.json'));
+        return $json;
     }
 
     /* (non-PHPdoc)
      * @see Zend\Mvc\Controller.AbstractRestfulController::get()
      */
     public function get($id) {
-        $json = new JsonModel(Factory::fromFile(__DIR__.'/test.json'));
+        $json = new JsonModel(Factory::fromFile(__DIR__.'/../../../data/menu/menubyid.json'));
         return $json;
     }
 

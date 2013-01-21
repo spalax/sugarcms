@@ -2,33 +2,37 @@ define([
     "require",
     "dojo/_base/declare",
     "dojo/_base/array",
+    "./route",
     "dojo/Stateful"
-], function(_require, declare, array, Stateful) {
+], function(_require, declare, array, route, Stateful) {
     return declare("Base Package", [Stateful], {
         // summary:
         //      This is a base class for all Packages in manage 
         //      area.
 
+        // routes: [private] Array
+        _routes: [],
+
         // routes: [protected] Array
-        routes: [],
+        routeParams: [],
 
         constructor: function () {
             try {
-                this.routes = [];
+                this._routes = this.routeParams = [];
             } catch (e) {
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                  throw e;
             }
         },
 
-        register: function () {
+        postscript: function () {
             try {
-                console.debug("All available routes in package >>>> ", this.routes);
-
+                this.inherited(arguments);
                 var _self = this;
-                array.forEach(this.routes, function (newRoute){
-                    _self._assertValidRoute(newRoute);
-                    _self.registerRoute(newRoute);
+
+                array.forEach(this.get('routeParams'), function (routeParams){
+                    var routeObject = _self.getRoute(routeParams);
+                    _self.addRoute(routeObject);
                 });
             } catch (e) {
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
@@ -36,19 +40,38 @@ define([
             }
         },
 
-        _assertValidRoute: function (/*route.route*/ newRoute) {
+        getRoute: function (/*Object*/ routeParams) {
             // summary:
-            //      Method for asserting newRoute is valid
+            //      Factory abstract method, created
+            //      for provide abilities to overload
+            //      in children.
+            // returns:
+            //      route object
+            // tags:
+            //      protected
 
-            // newRoute: route.route Object
+            throw new TypeError("abstract");
+        },
 
+        register: function () {
             try {
-                if (!newRoute.isInstanceOf(_require('./route').route)) {
-                    throw "Invalid route type must be an instance of ./_base/route";
-                }
+                console.debug("All available routes in package >>>> ", this.get('routes'));
+                array.forEach(this.get('routes'), _require('dojo/_base/lang').hitch(this, 'registerRoute'));
             } catch (e) {
-                console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
-                throw e;
+                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                 throw e;
+            }
+        },
+
+        addRoute: function (/*route*/ newRoute) {
+            try {
+                if (!newRoute.isInstanceOf(route)) {
+                    throw new TypeError("newRoute has undefined or incompatible type");
+                }
+                this._routes.push(newRoute);
+            } catch (e) {
+                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                 throw e;
             }
         },
 
