@@ -1,0 +1,124 @@
+.widgetHeaderTitle {
+	margin: 0;
+	color: #9a9a9a;
+	font-family: Oswald;
+	font-size: 14px;
+	text-shadow: 0 1px 0 #FFFFFF;
+	font-weight: normal;	
+}
+
+.label {
+	font-family: Droid Sans;
+	color: #8f8f8f;
+	font-size: 13px;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+.simple_field {
+	font-family: Droid Sans;
+	color: #696969;
+	font-size: 14px;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+/* 	.top_search_input { */
+/* 		font-family: Droid Sans; */
+/* 		color: #8f8f8f; */
+/* 		font-size: 11px; */
+/* 		text-shadow: 0 1px 0 #FFFFFF; */
+/* 	} */
+
+/* 	.lwParagraph { */
+/* 		line-height: 16px; */
+/* 	} */
+
+/* 	.field_notice { */
+/* 		font-family: Droid Sans; */
+/* 		color: #AAAAAA; */
+/* 		font-size: 11px; */
+/* 		padding-top: 6px; */
+/* 	} */
+
+
+
+/* 	.dtShowPer, .dtFilter, .dtInfo, .dtPagination { */
+/* 		font-family: Droid Sans; */
+/* 		color: #8f8f8f; */
+/* 		font-size: 13px; */
+/* 		text-shadow: 0 1px 0 #FFFFFF; */
+/* 	} */
+
+/* 	.small_count { */
+/* 		color: #fafafa; */
+/* 		text-shadow: 0 1px 0 #f68710; */
+/* 		font-family: Droid Sans; */
+/* 		font-size: 13px; */
+/* 	} */
+
+/* 	.big_count { */
+/* 		color: #fafafa; */
+/* 		text-shadow: 0 3px 6px rgba(0, 0, 0, 0.24); */
+/* 		font-family: Droid Sans; */
+/* 		font-size: 14px; */
+/* 	} */
+
+/* 	.tab_label { */
+/* 		font-family: Oswald; */
+/* 		color: #9D9D9D; */
+/* 		font-size: 18px; */
+/* 		text-shadow: 0 1px 0 #FFFFFF; */
+/* 	} */
+
+/* 	.contact_head { */
+/* 		margin: 0; */
+/* 		font-family: Oswald; */
+/* 		color: #9D9D9D; */
+/* 		font-size: 16px; */
+/* 		text-shadow: 0 1px 0 #FFFFFF; */
+/* 		font-weight: normal; */
+/* 	} */
+
+/* 	.tab_info { */
+/* 		font-family: Droid Sans; */
+/* 		color: #A6A6A6; */
+/* 		font-size: 12px; */
+/* 		text-shadow: 0 1px 0 #FFFFFF; */
+/* 	} */
+
+/* 	.copyright { */
+/* 		color: #b9b9b9; */
+/* 		font-family: Oswald; */
+/* 		font-size: 13px; */
+/* 		text-shadow: 0 1px 0 #FFFFFF; */
+/* 	} */
+
+/* 	.stats_info { */
+/* 		color: #b0b0b0; */
+/* 		font-family: Oswald; */
+/* 		font-size: 18px; */
+/* 		text-shadow: 0 1px 0 #FFFFFF; */
+/* 		font-weight: normal;	 */
+/* 	} */
+
+/* 	.visitor_stats, .tickets_stats, .users_stats, .orders_stats { */
+/* 		color: #f7f7f7; */
+/* 		font-family: Oswald; */
+/* 		font-size: 24px; */
+/* 	} */
+
+/* 	.visitor_stats { */
+/* 		text-shadow: 0 1px 2px #b13559;	 */
+/* 	} */
+
+/* 	.tickets_stats { */
+/* 		text-shadow: 0 1px 2px #b1ac35;	 */
+/* 	} */
+
+/* 	.users_stats { */
+/* 		text-shadow: 0 1px 2px #3599b1;	 */
+/* 	} */
+
+/* 	.orders_stats { */
+/* 		text-shadow: 0 1px 2px #b13536;	 */
+/* 	} */
+

@@ -3,7 +3,21 @@
 
 */
 
-@import url("Common.css");
-@import url("Login.css");
-@import url("Normalize.css");
+@import url("dijit.css");
+@import url("style.css");
+@import url("normalize.css");
+@import url("icons.css");
+@import url("button.css");
+@import url("widgets.css");
+@import url("typography.css");
+@import url("forms.css");
+
 @import url("package/Menus.css");
+
+
+
+/* @import "tipsy.css"; */
+/* @import "colorpicker.css"; */
+/* @import "jquery.cleditor.css"; */
+/* @import "fullcalendar.css"; */
+/* @import "colorbox.css"; */

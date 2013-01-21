@@ -1,0 +1,53 @@
+/* Table of Contents  ======================================================= */
+	
+	/* Initiations */
+	/* Pattern */
+	/* Top Panel */
+	/* Main Header */
+	/* Small Menu */
+	/* Sidebar */
+	/* Contents */
+	/* Buttons */
+	/* Typography */
+	/* Footer */
+	/* Grids */
+	/* Quick Stats */
+	/* Widgets */
+	/* Charts */
+	/* Tables */
+	/* UI */
+	/* Forms */
+	/* Message */
+	/* Pages */
+
+/* ========================================================================== */
+
+/* Initiations */
+
+a { 
+	text-decoration: none;
+	outline: none;
+}
+
+a:focus,
+span {
+	outline: none;
+}
+
+
+/* Pattern */
+
+	body {
+		background: url("images/pattern.png") repeat scroll 0 0 #f4f4f4;
+	}
+	
+
+	
+/* Pages */
+	
+.loginPage {
+	margin: 0 auto;
+	width: 280px;
+	margin-top: 120px;
+}
+	
