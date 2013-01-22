@@ -10,7 +10,7 @@ define([
         //      This is a base class for all Packages in manage 
         //      area.
 
-        // routes: [private] Array
+        // _routes: [private] Array
         _routes: [],
 
         // routes: [protected] Array
@@ -55,8 +55,8 @@ define([
 
         register: function () {
             try {
-                console.debug("All available routes in package >>>> ", this.get('routes'));
-                array.forEach(this.get('routes'), _require('dojo/_base/lang').hitch(this, 'registerRoute'));
+                console.debug("All available routes in package >>>> ", this._routes);
+                array.forEach(this._routes, _require('dojo/_base/lang').hitch(this, 'registerRoute'));
             } catch (e) {
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                  throw e;
