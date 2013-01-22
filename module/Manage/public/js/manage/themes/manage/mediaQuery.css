@@ -1,0 +1,146 @@
+	@media screen and (min-width: 1025px) {
+		.wrapper {
+			width: 1015px;
+		}
+	}
+
+	@media screen and (max-width: 1024px) {
+		.wrapper {
+			width: 94%;/* Check here width */
+		}
+
+		aside.sidebar {
+			width: 14.201%;
+		}
+
+		aside.sidebar.onlyOpera {
+			width: 15%;
+		}
+
+		div.contents {
+			width: 85.798%;	
+		}
+
+		ul.tab_nav > li {
+			width: 99.305%;
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		ul.tab_nav > li {
+			background-position: center center;
+		}
+
+		ul.tab_nav > li .tab_label, ul.tab_nav > li .tab_info {
+			display: none;
+		}
+
+		div.quick_stats, .under_stat {
+			display: none;
+		}
+
+		img.avatar {
+			margin-left: -10px;
+		}
+
+		img.aR {
+			margin-right: -10px;	
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		
+		.user > .label {
+			display: none;
+		}
+
+		.top_links > ul > li,
+		.top_links > ul > li.search_icon {
+			width: 22px;
+		}
+
+		.top_links > ul > li > a > .label {
+			display: none;
+		}
+
+		.top_links > ul > li > a > span.small_count {
+			margin-right: 8px;
+	    	margin-top: 5px;
+		}
+
+		div.logo {
+			float: none;
+			margin: 0 auto;
+			margin-bottom: 20px;
+			width: 284px;
+		}
+
+		nav.top_buttons {
+			float: none;
+			margin: 0 auto;
+			padding: 0 18px;
+		}
+
+		div.g_2, div.g_3, div.g_4, div.g_8, div.g_9, div.g_10 {
+			width: 50%;
+		}
+	}
+
+	@media screen and (max-width: 700px) {
+		
+		div.g_2, div.g_3, div.g_4, div.g_6, div.g_8, div.g_9, div.g_10 {
+			width: 100%;
+		}
+
+		.dtFilter {
+			display: none;
+		}
+
+		div.g_2.g_2M { /* Here Grid 2 Must, Mean It's unchanged */
+			width: 16.66%;
+		}
+
+		div.g_10.g_10M { /* Here Grid 10 Must, Mean It's unchanged */
+			width: 83.33%;
+		}
+
+		div.login {
+			margin-top: 70px;
+		}
+	}
+
+	@media screen and (max-width: 479px) {
+		header.main_header {
+			background: url("images/separator_menu.png") no-repeat bottom center scroll transparent;
+			padding-bottom: 0;
+		}
+
+		nav.top_buttons {
+			width: 208px;
+			height: 190px;
+			padding: 0;
+			padding-right: 18px;
+			background: url("images/separator_short.png") no-repeat scroll 0 43px,
+						url("images/separator_short.png") no-repeat scroll 0 144px;
+		}
+
+		nav.top_buttons ul li {
+			margin-bottom: 18px;
+		}
+
+		aside.sidebar {
+			display: none;
+		}
+
+		div.contents {
+			width: 100%;
+		}
+
+		div.contents > .grid_wrapper {
+			min-height: 0;
+		}
+
+		div.small_menu {
+			display: block;
+		}
+	}
