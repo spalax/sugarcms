@@ -13,7 +13,7 @@ define([
         // _routes: [private] Array
         _routes: [],
 
-        // routes: [protected] Array
+        // routeParams: [protected] Array
         routeParams: [],
 
         constructor: function () {
@@ -31,7 +31,7 @@ define([
                 var _self = this;
 
                 array.forEach(this.get('routeParams'), function (routeParams){
-                    var routeObject = _self.getRoute(routeParams);
+                    var routeObject = _self.extractRoute(routeParams);
                     _self.addRoute(routeObject);
                 });
             } catch (e) {
@@ -40,7 +40,7 @@ define([
             }
         },
 
-        getRoute: function (/*Object*/ routeParams) {
+        extractRoute: function (/*Object*/ routeParams) {
             // summary:
             //      Factory abstract method, created
             //      for provide abilities to overload

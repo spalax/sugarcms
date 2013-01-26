@@ -11,14 +11,18 @@ define([
 ], function(declare, ContentPane, hash, lang, aspect, array, StackContainer, route, _Package) {
     return declare("ContentPackage", [ ContentPane,  _Package ], {
 
-        // _container: [privat] dijit.layout.StackContainer
+        // _routeInstances: [private] Array
+        //      Container for created instances,
+        //      made for persist instances which owned
+        //      by route
+
+        // _container: [private] dijit.layout.StackContainer
         _container: null,
 
         postCreate: function () {
             try {
                 this._container = new StackContainer();
                 this.addChild(this._container);
-
                 this.inherited(arguments);
             } catch (e) {
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
@@ -26,8 +30,8 @@ define([
             }
         },
 
-        getRoute: function (/*Object*/ routeParams) {
-            // see: package::getRoute
+        extractRoute: function (/*Object*/ routeParams) {
+            // see: package::extractRoute
             try {
                 var routeObject = new route(routeParams);
                 routeObject.on('handle', lang.hitch(this, 'handle', this._container, routeObject));
@@ -38,22 +42,29 @@ define([
             }
         },
 
-        handle: function (/*dijit.layout.StackContainer*/ container, /*route.route*/ routeObject, /*Object*/ evt) {
+        handle: function (/*dijit.layout.StackContainer*/ container, /*route*/ routeObject, /*Object*/ evt) {
             // summary:
-            //      Handler for all routes
+            //      Handler for all routes inside content container
             try {
-                if (!this._inst) {
-                    this._inst = routeObject.getInstance();
-                    console.debug("Route handled: New instance created >>>", this._inst);
-                    container.addChild(this._inst);
+                if (!this._routeInstances) {
+                    this._routeInstances = [];
+                }
+                var _inst = this._routeInstances[routeObject.get('uri')];
 
-                    aspect.before(this, 'onShow', lang.hitch(this._inst, 'refresh'));
-                    aspect.after(this, 'onHide', lang.hitch(this._inst, 'onHide'));
+                if (!_inst) {
+                    _inst = this._routeInstances[routeObject.get('uri')] = routeObject.getInstance();
+                    console.debug("Route handled: New instance created >>>", _inst);
+                    container.addChild(_inst);
+
+                    aspect.before(this, 'onShow', lang.hitch(_inst, 'refresh'));
+                    aspect.after(this, 'onHide', lang.hitch(_inst, 'onHide'));
+                } else {
+                    console.debug("Route handled: Cached instance will be used >>>", _inst);
                 }
 
-                console.debug("Route handled: params >>>", evt);
-                this._inst.attr(evt && evt.params || {});
-                container.selectChild(this._inst);
+                console.debug("Route handled: params >>>", evt, _inst);
+                _inst.attr(evt && evt.params || {});
+                container.selectChild(_inst);
                 this.getParent().selectChild(this);
             } catch (e) {
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);

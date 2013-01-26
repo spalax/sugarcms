@@ -1,15 +1,15 @@
 define([
     "dojo/_base/declare",
-    "../../_PageWidgetsScope",
+    "../../_PageWidgetsScopeMixin",
     "dojo/store/JsonRest",
     "dijit/_TemplatedMixin",
     "./widget/Form",
     "dojo/text!./templates/Container.html"
-], function(declare, _PageWidgetsScope, 
+], function(declare, _PageWidgetsScopeMixin,
             JsonStore, _TemplatedMixin,
             Form, template) {
 
-    return declare([ _PageWidgetsScope, _TemplatedMixin ], {
+    return declare([ _PageWidgetsScopeMixin, _TemplatedMixin ], {
         //  summary:
         //      Add container. Contains widgets who responsible
         //      for adding pages to the system.

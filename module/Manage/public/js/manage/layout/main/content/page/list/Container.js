@@ -2,15 +2,15 @@ define([
     "dojo/_base/declare",
     "dojo/_base/array",
     "dojo/_base/lang",
-    "../../_PageWidgetsScope",
+    "../../_PageWidgetsScopeMixin",
     "dijit/_TemplatedMixin",
     "dojo/text!./templates/Container.html",
     "dojo/i18n!../nls/List",
     "./widget/Grid",
     "dijit/form/Button"
-], function(declare, array, lang, _PageWidgetsScope, _TemplatedMixin,
+], function(declare, array, lang, _PageWidgetsScopeMixin, _TemplatedMixin,
             template, translation, Grid, Button) {
-    return declare([ _PageWidgetsScope, _TemplatedMixin ], {
+    return declare([ _PageWidgetsScopeMixin, _TemplatedMixin ], {
         //  summary:
         //      List container. Contains widgets who responsible for
         //      displaying list of pages.
