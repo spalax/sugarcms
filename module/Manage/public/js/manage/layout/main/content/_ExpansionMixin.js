@@ -26,8 +26,7 @@ define([
 
         _setTargetInstanceAttr: function (targetInstance) {
             // summary:
-            //      Deprecated setter should be replaced when
-            //      ContentPane will be correctly support _targetInstanceSetter
+            //      Set instance where expansion will be attached
             try {
                 console.debug("Target instance is >>>", targetInstance,
                               "Current instance is >>>", this);

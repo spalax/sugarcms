@@ -2,8 +2,9 @@ define([
     "require",
     "dojo/_base/declare",
     "dojo/_base/array",
+    "dojo/_base/lang",
     "../route"
-], function(_require, declare, array, route) {
+], function(_require, declare, array, lang, route) {
     return declare("ContentRoute", [ route ], {
         // summary:
         //      Mixin handle situation when route will
@@ -18,7 +19,15 @@ define([
             //      module. Then it is will be loaded
             //      and put to the module parameter
             try {
-                this.instanceType = _require(module);
+
+                 _require([module], lang.hitch(this, function (_module) {
+                     try {
+                         this.instanceType = _module;
+                     } catch (e) {
+                          console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                          throw e;
+                     }
+                 }));
             } catch (e) {
                  console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
                  throw e;
@@ -56,7 +65,6 @@ define([
                 }
 
                 var _self = this;
-                alert(expansionPackage['module']);
                 require([expansionPackage['module']], function (expansion){
                     if (!expansion || !expansion.prototype ||
                         !expansion.prototype.isInstanceOf(_require('./_ExpansionMixin'))) {

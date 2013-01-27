@@ -1,11 +1,8 @@
 define([
         "dojo/_base/declare",
         "../package",
-        "../route",
-        "./list/Container",
-        "./add/Container",
         "dojo/i18n!./nls/Package"
-], function(declare, _Package, route, ListContainer, AddContainer, translation) {
+], function(declare, _Package, translation) {
 
     return declare("PagePackage", [ _Package ], {
         // summary:

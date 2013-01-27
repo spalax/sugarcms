@@ -1,15 +1,15 @@
 [{
   "package": "manage/layout/main/content/menu",
-  "routes": [{
-        "uri": "/menu",
-        "module": "manage/layout/main/content/menu/list/Container",
-        "expansions": [{
-            "module": "manage/layout/main/content/page/expanders/Test"
-        }]},
-        {
+  "routes": [
+       {
         "uri": "/menu/manage/:menuId",
-        "module": "manage/layout/main/content/menu/manage/Container"
-        }]
+        "module": "manage/layout/main/content/menu/manage/Container",
+        "expansions": [
+            {"module": "manage/layout/main/content/page/expanders/Test"},
+            {"module": "manage/layout/main/content/page/expanders/NextTest"}
+        ]
+       }
+  ]
 },
 {
   "package": "manage/layout/main/content/page",

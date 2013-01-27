@@ -1,6 +1,6 @@
 define([
     "dojo/_base/declare",
-    "dijit/layout/ContentPane",
+    "../../ContentPane",
     "dojo/hash",
     "dojo/_base/lang",
     "dojo/aspect",
@@ -18,6 +18,8 @@ define([
 
         // _container: [private] dijit.layout.StackContainer
         _container: null,
+
+        doLayout: false,
 
         postCreate: function () {
             try {

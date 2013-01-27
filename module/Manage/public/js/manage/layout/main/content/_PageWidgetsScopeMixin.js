@@ -1,6 +1,6 @@
 define([
     "dojo/_base/declare",
-    "dijit/layout/ContentPane"
+    "../../ContentPane"
 ], function(declare, ContentPane) {
     return declare([ ContentPane ], {
         // summary:

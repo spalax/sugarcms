@@ -3,10 +3,10 @@ define([
     "../../../../ContentPane",
     "../../_ExpansionMixin"
 ], function(declare, ContentPane, _ExpansionMixin) {
-    return declare("PageExpanderTest", [ ContentPane, _ExpansionMixin ], {
+    return declare("PageExpanderNextTest", [ ContentPane, _ExpansionMixin ], {
 
-        title: 'Page Expander Test',
-        content: 'Page expander CONTTTENENENENENENTT',
+        title: 'Next Test Title',
+        content: 'Next test COntent Pane',
 
         postCreate: function () {
             try {

@@ -1,11 +1,8 @@
 define([
         "dojo/_base/declare",
         "../package",
-        "../route",
-        "./list/Container",
-        "./manage/Container",
         "dojo/i18n!./nls/Package"
-        ], function(declare, _Package, route, ListContainer, ManageContainer, translation) {
+        ], function(declare, _Package, translation) {
 
     return declare("MenuPackage", [ _Package ], {
         // summary:
