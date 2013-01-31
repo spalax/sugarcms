@@ -85,25 +85,104 @@ define([
             return this._registerRoute(target, route, callback);
         },
 
-        _registerRoute: function(/*String*/target, /*String|RegExp*/route, /*Function*/callback, /*Boolean?*/isBefore){
+        _prepareTargets: function (/*String|Array|RegExp*/ targets) {
+            // summary:
+            //      Method transform targets to suitable array
+            //      format.
+            // returns:
+            //      Array
+            try {
+                var _splitTarget = [];
 
-            route = lang.isString(route) && route.replace(new RegExp('/', 'g'), '');
-
-            if (target == '/') {
-                var matchedRoute = '/'+route;
-            } else {
-                var matchedRoute = target+'/'+route;
+                if (targets instanceof Array) {
+                    _splitTarget = targets;
+                } else if (typeof targets == 'object') {
+                    _splitTarget = [targets];
+                } else if (typeof targets == 'string') {
+                    _splitTarget = targets.split('/');
+                    // Avoiding situation when split "/"
+                    // and return ["", ""] now it is
+                    // will be [""], avoid as well
+                    // situation if targets equal empty "".
+                    if (_splitTarget && _splitTarget.length > 1 && _splitTarget[0] == '') {
+                        _splitTarget.splice(0,1)
+                    }
+                } else {
+                    throw "Targets must be array or string types";
+                }
+                return _splitTarget;
+            } catch (e) {
+                 console.error(this.declaredClass+" "+arguments.callee.nom, arguments, e);
+                 throw e;
             }
+        },
+
+        registerBefore: function(/*String|RegExp*/ route, /*Function*/ callback){
+            // summary:
+            //		This method is unsupported
+
+            // FIXME:
+            //      It is not correct to close one of methods
+            //      in public interface of parent.
+            //      Parent must be reorganized.
+            throw TypeError("Method unsupported");
+        },
+
+        _stripExclusiveRegExp: function (/*String*/ str) {
+            return str.replace(new RegExp(/^(\/\^|\/)/), '').
+                        replace(new RegExp(/(\$\/|\/)$/), '');
+        },
+
+        _registerRoute: function(/*String|Array*/targets, /*String|RegExp*/route, /*Function*/callback){
 
             var index, exists, routeObj, callbackQueue = [], removed, self = this,
                 routes = this._routes, routeIndex = this._routeIndex,
-                targets = this._targets, parentTarget, foundTarget = null;
+                parentTarget, foundTarget = null;
 
-            var _splitTarget = [""];
-            if (target != '/') {
-                _splitTarget = lang.isString(target) && target.split('/') || [];
+            if (lang.isFunction(route)) {
+                callback = route;
+                route = targets;
+                targets = '/';
             }
 
+            if (typeof targets == 'undefined') {
+                throw "Targets must be defined";
+            }
+
+            if (typeof route == 'undefined') {
+                throw "Route must be defined";
+            }
+
+            if (!lang.isFunction(callback)) {
+                throw "Callback must be defined";
+            }
+
+            _splitTarget = this._prepareTargets(targets);
+
+            var matchedRoute = '';
+            for (var i = 0;i < _splitTarget.length; i++) {
+                var _t = '';
+                // Understanding is one of targets`s item
+                // regexp.
+                if (typeof _splitTarget[i] == 'object') {
+                   _t = this._stripExclusiveRegExp(_splitTarget[i].toString());
+                } else {
+                   _t = _splitTarget[i].substr(0, 1) != '/' && '/'+_splitTarget[i] || _splitTarget[i];
+                }
+                console.log("T >>>", _t);
+                if (_t != '/' && _t != '\\/') {
+                    matchedRoute+=_t;
+                }
+                _splitTarget[i] = _t;
+            }
+
+            if (typeof route == 'object') {
+                matchedRoute+=this._stripExclusiveRegExp(route.toString());
+            } else {
+                matchedRoute+=route;
+            }
+
+            console.log("Targets splitted", _splitTarget);
             (function _findRoute (splitTarget, targetsPointer) {
                 var node = splitTarget.shift();
                 foundTarget = targetsPointer[node];
@@ -125,7 +204,7 @@ define([
                     parentTarget = foundTarget.sr;
                     _findRoute(splitTarget, foundTarget.sr);
                 }
-            })(_splitTarget, targets);
+            })(_splitTarget, this._targets);
 
             index = this._routeIndex[matchedRoute];
             exists = typeof index !== "undefined";
@@ -140,13 +219,11 @@ define([
                 fire: fireRoute
             };
 
-            console.debug("Register routes >>>", routeObj, matchedRoute);
+            console.debug("Register routes >>>", routeObj, matchedRoute, this._targets);
 
 
-            if(typeof route == "string"){
-                routeObj.parameterNames = this._getParameterNames(matchedRoute);
-                routeObj.route = this._convertRouteToRegExp(matchedRoute);
-            }
+            routeObj.parameterNames = this._getParameterNames(matchedRoute);
+            routeObj.route = this._convertRouteToRegExp(matchedRoute);
 
             if(!exists){
                 index = routes.length;

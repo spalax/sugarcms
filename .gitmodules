@@ -16,3 +16,6 @@
 [submodule "public/js/library/put-selector"]
 	path = public/js/library/put-selector
 	url = git://github.com/kriszyp/put-selector.git
+[submodule "public/js/library/util"]
+	path = public/js/library/util
+	url = git://github.com/dojo/util.git
